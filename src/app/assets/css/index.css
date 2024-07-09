@@ -1,0 +1,157 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar-customize {
+  /* CSS cho menu navbar */
+  position: absolute; /* Đặt menu nằm trên video */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #505763;
+  backdrop-filter: none;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+.navbar-customize.fixed-top {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+.navbar-customize .navbar-toggler {
+  background-color: #FE6B6E;
+}
+.navbar-customize .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.brand-header {
+  color: #FE6B6E !important;
+  transition: color 0.5s ease-in-out;
+}
+.brand-header:hover {
+  color: #e11d48 !important;
+}
+
+.navbar-logo {
+  color: #FE6B6E;
+}
+
+.nav-link-header {
+  color: #fff !important;
+  transition: color 0.5s ease-in-out;
+}
+.nav-link-header:hover {
+  color: #FE6B6E !important;
+}
+.nav-link-header.active {
+  color: #FE6B6E !important;
+}
+.nav-link-header.active:hover {
+  color: #e11d48 !important;
+}
+
+.user-button {
+  color: #FE6B6E;
+  transition: color 0.5s ease-in-out;
+}
+.user-button:hover {
+  color: #e11d48;
+  cursor: pointer;
+}
+
+.carousel-container {
+  padding: 0;
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  /* Responsive cho carousel (điều chỉnh theo nhu cầu của bạn) */
+}
+.carousel-container .video-wrapper {
+  position: relative; /* Để đặt phần tử con (Image) ở vị trí tương đối */
+}
+.carousel-container .carousel-container-hero-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.carousel-container .carousel-container-hero {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .carousel-container .carousel-container-hero {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-container .carousel-container {
+    height: 100vh; /* Điều chỉnh chiều cao cho màn hình nhỏ hơn */
+  }
+}
+
+.home-footer {
+  background-color: rgba(20, 23, 28, 0.1);
+}
+.home-footer .home-footer-link {
+  text-decoration: none;
+  color: #29303b;
+  display: block;
+}
+.home-footer .home-footer-link:hover {
+  text-decoration: underline;
+  color: #FE6B6E;
+}
+
+.button-primary {
+  background-color: #FE6B6E;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  border: 0;
+}
+.button-primary:hover {
+  animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+  0% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  background-color: #FE6B6E;
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+.back-to-top.visible {
+  opacity: 1;
+}/*# sourceMappingURL=index.css.map */

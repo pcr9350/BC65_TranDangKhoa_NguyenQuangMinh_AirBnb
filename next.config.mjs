@@ -19,7 +19,13 @@ const nextConfig = {
             hostname: 'picsum.photos',
             port: '',
             pathname: '/**'
-        }
+        },
+        {
+            protocol: 'http',
+            hostname: 'w3.org',
+            port: '',
+            pathname: '/**'
+        },
         ]
 }
 };

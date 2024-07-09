@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <main>
       <HomeLayout>
-        Nội dung trang chủ
+        <button className="btn btn-primary">ABC</button>
       </HomeLayout>
    
     </main>

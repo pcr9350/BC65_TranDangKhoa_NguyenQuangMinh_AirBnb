@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import userSlider from "./reducers/admin/userSlice";
+import appSlice from "./reducers/admin/appSlice";
+import modalSlice from "./reducers/admin/modalSlice";
 
 
 export const storeAdmin = configureStore({
     reducer: {
-        stateAdmin: (state = 10) => state
+        user: userSlider, 
+        app: appSlice, 
+        modal: modalSlice,
     }
 })

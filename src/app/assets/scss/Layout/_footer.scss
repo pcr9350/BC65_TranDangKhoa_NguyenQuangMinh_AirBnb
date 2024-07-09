@@ -1,0 +1,14 @@
+.home-footer {
+    background-color: $color-black-dark;
+
+    .home-footer-link {
+        text-decoration: none;
+        color: $color-black-0;
+        display: block;
+
+        &:hover {
+            text-decoration: underline;
+            color: $color-pink;
+        }
+    }
+}
