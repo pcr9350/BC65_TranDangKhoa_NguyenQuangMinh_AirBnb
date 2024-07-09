@@ -1,38 +1,37 @@
 'use client'
-import React from 'react'
-import { Provider } from 'react-redux'
-import { storeAdmin } from '../redux/storeAdmin'
-import Link from 'next/link';
-const AdminTemplate = (props) => {
-  const links = [
-    { text: 'Users', href: '/admin/users' },
-    { text: 'Vị Trí', href: '/admin/places' },
-    { text: 'Rooms', href: '/admin/rooms' },
-    { text: 'Book Room', href: '/admin/book-room' },
-  ];
-  return (
-    <Provider store={storeAdmin}>
-    <div className='d-flex' style={{minHeight:'100vh'}}>
-    <div className="sidebar w-25 bg-dark text-white p-3 d-flex flex-column"> 
-          <h4 className="text-center mb-4">Dashboard</h4> {/* Đưa tiêu đề lên trên cùng */}
-          <div className="d-flex flex-column justify-content-center align-items-center flex-grow-1"> {/* Phần này giúp các liên kết nằm giữa */}
-            <ul className="list-unstyled">
-              {links.map((link) => (
-                <li key={link.href} className="mb-3">
-                  <Link href={link.href} className="text-white text-decoration-none btn btn-dark">
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-            <div className='content w-75 h-100 p-4'>
-                {props.children}
-            </div>
-        </div>
-        </Provider>
-  )
+import { getData } from "../utils/storage";
+import { useEffect, useState } from "react";
+import LoadingGlobal from "../(components)/(Admin)/common/LoadingGlobal";
+import { Provider, useDispatch } from "react-redux";
+import { setUser } from "../redux/reducers/admin/userSlice";
+import { getUserService } from "../services/userService";
+import { useRouter } from "next/navigation";
+import { storeAdmin } from "../redux/storeAdmin";
+
+const AdminLayout = (props) => {
+    const [isLoading, setIsLoading] = useState(true);
+  const token = getData("token");
+  const userId = getData("userId");
+
+  const navigate = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token && userId) {
+      getUserService(userId).then((data) => dispatch(setUser(data)));
+      // return navigate.push("/admin");
+    }
+    setIsLoading(false);
+  }, [token, userId, navigate]);
+  return isLoading ? <LoadingGlobal /> : <div>{props.children}</div>;
+  
+  
 }
 
-export default AdminTemplate
+export default function AdminLayoutWrapper({ children }) {
+    return (
+      <Provider store={storeAdmin}>
+        <AdminLayout>{children}</AdminLayout>
+      </Provider>
+    );
+  }

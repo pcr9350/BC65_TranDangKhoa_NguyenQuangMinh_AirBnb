@@ -1,0 +1,97 @@
+.navbar-customize {
+    /* CSS cho menu navbar */
+    position: absolute; /* Đặt menu nằm trên video */
+    top: 0;
+    left: 0;
+    width: 100%;
+    // z-index: 99; /* Đảm bảo menu nằm trên video */
+
+    background-color: $color-black-light;
+    backdrop-filter: none;      // Không làm mờ ban đầu
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease; // Chuyển tiếp mượt mà
+
+    &.fixed-top { // Khi navbar có class "fixed-top" (khi cuộn)
+        background-color: $navbar-background-color;
+        backdrop-filter: $navbar-backdrop-filter;
+      }
+    .navbar-toggler {
+        background-color: $color-pink;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.brand-header {
+    color: $color-pink !important;
+    transition: color 0.5s ease-in-out;
+    &:hover {
+        color: $color-pink-1 !important;
+    }
+}
+
+.navbar-logo {
+    color: $color-pink;
+}
+
+.nav-link-header {
+    color: $color-white-0 !important;
+    transition: color 0.5s ease-in-out;
+    &:hover {
+        color: $color-pink !important;
+    }
+    &.active {
+        color: $color-pink !important;
+        &:hover {
+            color: $color-pink-1 !important;
+        }
+    }
+}
+
+.user-button {
+    color: $color-pink;
+    transition: color 0.5s ease-in-out;
+    &:hover {
+        color: $color-pink-1;
+        cursor: pointer;
+    }
+}
+
+.carousel-container {
+    padding: 0;
+    overflow: hidden; // Đảm bảo nội dung carousel không tràn ra ngoài
+    height: auto;
+    width: 100%;
+    z-index: 1;
+    
+
+    .video-wrapper {
+        position: relative; /* Để đặt phần tử con (Image) ở vị trí tương đối */
+    }
+        .carousel-container-hero-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+            .carousel-container-hero {
+            width: 100%; // Chiếm toàn bộ chiều rộng màn hình
+            height: auto; // Tự động điều chỉnh chiều cao theo tỷ lệ của ảnh
+            max-width: 100%; // Giới hạn chiều rộng tối đa (optional)
+            margin: 0 auto; // Canh giữa carousel
+
+            @media (max-width: 768px) {
+            // Ví dụ về breakpoint cho thiết bị di động
+            max-width: 100%; // Giảm chiều rộng tối đa trên màn hình nhỏ hơn
+        }
+    }
+    /* Responsive cho carousel (điều chỉnh theo nhu cầu của bạn) */
+    @media (max-width: 768px) {
+    .carousel-container {
+        height: 100vh; /* Điều chỉnh chiều cao cho màn hình nhỏ hơn */
+    }
+}
+}
+
+
+

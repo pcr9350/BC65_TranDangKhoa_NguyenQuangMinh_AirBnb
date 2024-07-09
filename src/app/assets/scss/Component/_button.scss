@@ -1,0 +1,39 @@
+.button-primary {
+    &:hover {
+        animation: ani9 0.4s ease-in-out infinite alternate;
+    }
+    background-color: $color-pink;
+    width: 100px;
+    height: 40px;
+    color: $color-white-0;
+    border: 0;
+}
+@keyframes ani9 {
+    0% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+//Button BackToTop
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: $border-radius-5;
+    background-color: $color-pink; 
+    color: $color-white-0;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 9999; 
+  
+    &.visible {
+      opacity: 1;
+    }
+  }

@@ -4,6 +4,7 @@ import Header from '../(components)/Header';
 // import redux
 import { Provider } from "react-redux";
 import { store } from '../redux/store';
+import Footer from '../(components)/Footer';
 
 const HomeTemplate = ({children}) => {
   return (
@@ -13,7 +14,7 @@ const HomeTemplate = ({children}) => {
         <div className='w-100' style={{minHeight:800}}>
             {children}
         </div>
-        <footer className='bg-primary text-center'>Footer</footer>
+        <Footer />
         </Provider>
     </>
   )
