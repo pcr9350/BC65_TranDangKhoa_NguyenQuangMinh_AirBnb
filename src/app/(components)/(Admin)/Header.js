@@ -14,7 +14,7 @@ import {
   import MenuIcon from "@mui/icons-material/Menu";
   import { toggleSidebar } from "../../redux/reducers/admin/appSlice";
   import MuiAppBar from "@mui/material/AppBar";
-  import { removeData } from "../../utils/storage";
+  import { storageData } from "../../utils/storage";
 //   import { useNavigate } from "react-router-dom";
 import { useRouter } from 'next/navigation'
   
@@ -24,7 +24,7 @@ import { useRouter } from 'next/navigation'
     const open = Boolean(anchorEl);
     const dispatch = useDispatch();
     // const navigate = useNavigate();
-    const navigate = useRouter();
+    const router = useRouter();
     const { showSidebar } = useSelector((state) => state.app);
     
     const [width, setWidth] = useState(window.innerWidth)
@@ -48,7 +48,7 @@ import { useRouter } from 'next/navigation'
     const items = [
       {
         text: "Dashboard",
-        href: "/admin",
+        href: "/admin/db-admin",
       },
       {
         text: "Users",
@@ -88,9 +88,9 @@ import { useRouter } from 'next/navigation'
     }));
   
     const handleLogout = () => {
-      removeData("token");
-      removeData("userId");
-      window.location.href = "/admin/login";
+      storageData.removeData("token");
+      storageData.removeData("userId");
+      window.location.href = "/admin";
     };
   
   
@@ -114,7 +114,7 @@ import { useRouter } from 'next/navigation'
             >
               {items?.map(item  => 
               <MenuItem key={item.href} onClick={() => {
-                navigate(item.href)
+                router.push(item.href)
                 setIsShowMenu(false)
               }}>{item?.text}</MenuItem>
   

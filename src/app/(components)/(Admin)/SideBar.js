@@ -29,7 +29,7 @@ import {
     {
       text: "Dashboard",
       icon: <DashboardIcon color="info" />,
-      href: "/admin",
+      href: "/admin/db-admin",
     },
     {
       text: "Users",
@@ -56,8 +56,8 @@ import {
   const SideBar = () => {
     const theme = useTheme();
     const dispatch = useDispatch();
-    const { pathname } = useSearchParams();
-    const navigate = useRouter();
+    const pathname  = useSearchParams();
+    const router = useRouter();
   
   
     const { showSidebar } = useSelector((state) => state.app);
@@ -140,7 +140,7 @@ import {
               key={item?.href}
               disablePadding
               sx={{ display: "block" }}
-              onClick={() => navigate(item.href)}
+              onClick={() => router.push(item.href)}
               className={`${item.href === pathname && "bg-gray-800 text-white"}`}
             >
               <ListItemButton

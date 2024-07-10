@@ -22,12 +22,14 @@ const HomeCarousel = () => {
               <source src={video.url} type="video/mp4" />
             </video>
             <div className="carousel-container-hero-wrapper"> 
-              <Image 
-                src="/swoosh-hero.png" 
-                className="carousel-container-hero" 
-                width={1400} 
-                height={50} 
-                alt="..." 
+              <Image
+                src="/swoosh-hero.png"
+                alt="Swoosh Hero" // Đặt alt mô tả rõ nội dung ảnh
+                width={1400}
+                height={50}
+                priority
+                className="carousel-container-hero" // Di chuyển className xuống dưới 
+                quality={85}
               />
             </div>
           </div>

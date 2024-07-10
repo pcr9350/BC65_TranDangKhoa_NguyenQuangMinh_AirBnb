@@ -1,19 +1,19 @@
 'use client'
-import { getData } from "../utils/storage";
+import { storageData } from "../utils/storage";
 import { useEffect, useState } from "react";
 import LoadingGlobal from "../(components)/(Admin)/common/LoadingGlobal";
 import { Provider, useDispatch } from "react-redux";
 import { setUser } from "../redux/reducers/admin/userSlice";
 import { getUserService } from "../services/userService";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { storeAdmin } from "../redux/storeAdmin";
 
 const AdminLayout = (props) => {
     const [isLoading, setIsLoading] = useState(true);
-  const token = getData("token");
-  const userId = getData("userId");
+  const token = storageData.getData("token");
+  const userId = storageData.getData("userId");
 
-  const navigate = useRouter();
+  // const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const AdminLayout = (props) => {
       // return navigate.push("/admin");
     }
     setIsLoading(false);
-  }, [token, userId, navigate]);
+  }, [token, userId]);
   return isLoading ? <LoadingGlobal /> : <div>{props.children}</div>;
   
   

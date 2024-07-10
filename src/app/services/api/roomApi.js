@@ -1,5 +1,5 @@
 
-import { axiosClient, baseURL, tokenCybersoft } from "../axiosClient";
+import { axiosClient } from "../axiosClient";
 
 export const roomApi = {
   gets: () => axiosClient.get(`/phong-thue`),

@@ -5,6 +5,7 @@ import Header from '../(components)/Header';
 import { Provider } from "react-redux";
 import { store } from '../redux/store';
 import Footer from '../(components)/Footer';
+import BackToTopButton from '../(components)/BackToTopButton';
 
 const HomeTemplate = ({children}) => {
   return (
@@ -15,6 +16,7 @@ const HomeTemplate = ({children}) => {
             {children}
         </div>
         <Footer />
+        <BackToTopButton />
         </Provider>
     </>
   )

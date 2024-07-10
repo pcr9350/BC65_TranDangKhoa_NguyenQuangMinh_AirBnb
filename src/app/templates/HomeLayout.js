@@ -6,6 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import Footer from '../(components)/Footer';
 import HomeCarousel from '../(components)/HomeCarousel';
+import BackToTopButton from '../(components)/BackToTopButton';
 
 const HomeLayout = (props) => {
 
@@ -18,7 +19,7 @@ const HomeLayout = (props) => {
       <div className="w-100" style={{ minHeight: 800 }}>
         {props.children}
       </div>
-
+      <BackToTopButton />
       <Footer />
     </>
     
