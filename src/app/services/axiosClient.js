@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getData } from "../utils/storage";
+import { storageData } from "../utils/storage";
 
 export const baseURL = "https://airbnbnew.cybersoft.edu.vn/api";
 
@@ -19,7 +19,7 @@ axiosClient.interceptors.request.use(
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
         Tokencybersoft: tokenCybersoft,
-        token: getData("token"),
+        token: storageData.getData("token"),
       },
     };
   },

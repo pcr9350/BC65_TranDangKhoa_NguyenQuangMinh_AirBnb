@@ -1,6 +1,6 @@
 import { baseURL, tokenCybersoft } from "../services/axiosClient";
 import { getsLocationService } from "../services/locationService";
-import { getData } from "./storage";
+import { storageData } from "./storage";
 
 export const convertDateToISO = (dateString) => {
   if (!dateString) return dateString;
@@ -23,7 +23,7 @@ export const uploadImage = async (img) => {
       {
         method: "POST",
         headers: {
-          token: getData("token"),
+          token: storageData.getData("token"),
           tokenCybersoft,
         },
         body: formData,

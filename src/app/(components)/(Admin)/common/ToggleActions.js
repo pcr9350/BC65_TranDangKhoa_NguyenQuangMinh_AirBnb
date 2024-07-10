@@ -14,7 +14,7 @@ import {
   setUserModal,
 } from "../../../redux/reducers/admin/modalSlice";
 // import { useLocation } from "react-router-dom";
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useCallback } from "react";
 
 const actions = [
@@ -26,7 +26,8 @@ const actions = [
 export default function ToggleActions() {
   const { toggleActions } = useSelector((state) => state.app);
   const dispatch = useDispatch();
-  const { pathname } = useSearchParams();
+  const pathname  = usePathname();
+  
 
   const handleOpen = () => dispatch(toggleToggleActions({ open: true }));
   const handleClose = () =>
@@ -60,7 +61,7 @@ export default function ToggleActions() {
       onClose={handleClose}
       onOpen={handleOpen}
       open={toggleActions.open}
-      hidden={["/admin/book-room", "/admin"].includes(pathname)}
+      hidden={["/admin/db-admin", "/admin", "/admin/book-room"].includes(pathname)}
       onClick={handleOpenModal}
     >
       {/* {actions.map((action) => (

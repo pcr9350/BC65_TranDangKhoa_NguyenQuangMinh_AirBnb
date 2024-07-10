@@ -50,7 +50,7 @@ const Header = () => {
               <Link className="nav-link nav-link-header text-center active" aria-current="page" href="/">Home</Link>
             </li>
             <li className="nav-item mx-3">
-              <Link className="nav-link nav-link-header text-center" href="/">About</Link>
+              <Link className="nav-link nav-link-header text-center" href="/admin">About</Link>
             </li>
             <li className="nav-item mx-3">
               <Link className="nav-link nav-link-header text-center" href="/">Services</Link>

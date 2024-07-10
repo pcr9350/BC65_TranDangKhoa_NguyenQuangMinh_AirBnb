@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+.view-card-hover:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .navbar-customize {
   /* CSS cho menu navbar */
   position: absolute; /* Đặt menu nằm trên video */

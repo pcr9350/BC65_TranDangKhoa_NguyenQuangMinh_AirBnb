@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { LoadingButton } from "@mui/lab"; // Giữ nguyên LoadingButton từ MUI
 import { loginService } from "../services/authService";
 import { useRouter } from 'next/navigation';
-
+import { Button, CircularProgress, Paper, TextField, Typography } from "@mui/material";
 const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
@@ -60,9 +60,9 @@ const AdminLogin = () => {
               }
             />
           </div>
-          <LoadingButton type="submit" loading={isLoading} variant="outline-primary">
-            Login
-          </LoadingButton>
+            <Button type="submit" disabled={isLoading} variant="outlined" color="primary">
+              {isLoading ? <CircularProgress size={24} /> : 'Login'}
+            </Button>
         </form>
       </div>
     </div>
