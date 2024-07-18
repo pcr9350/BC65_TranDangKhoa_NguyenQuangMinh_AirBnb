@@ -1,24 +1,25 @@
-'use client'
+"use client";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const Table = ({ rows = [], columns = [], height }) => {
   const { showSidebar } = useSelector((state) => state.app);
-  
-  const [width, setWidth] = useState(window.innerWidth)
+
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    setWidth(window.innerWidth)
-  }, [window.innerWidth])
+    setWidth(window.innerWidth);
+  }, [window.innerWidth]);
 
   return (
     <div
       style={{
-        height: '70%',
-        width: width < 768 ? null : `${
-          !showSidebar ? "calc(100vw - 120px)" : `calc(100vw - 300px)`
-        }`,
+        height: "70%",
+        width:
+          width < 768
+            ? null
+            : `${!showSidebar ? "calc(100vw - 120px)" : `calc(100vw - 300px)`}`,
         overflowX: "auto",
       }}
     >

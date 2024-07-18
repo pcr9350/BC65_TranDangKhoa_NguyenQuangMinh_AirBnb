@@ -1,6 +1,6 @@
-'use client'
-import AdminDashboardLayout from '@/app/templates/AdminDashboardLayout'
-import React from 'react'
+"use client";
+import AdminDashboardLayout from "@/app/templates/AdminDashboardLayout";
+import React from "react";
 
 import { useEffect, useState } from "react";
 import Table from "../../(components)/(Admin)/common/Table";
@@ -16,7 +16,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import UserModal from "../../(components)/(Admin)/(modals)/UserModal";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserModal, setUserRoomModal } from "../../redux/reducers/admin/modalSlice";
+import {
+  setUserModal,
+  setUserRoomModal,
+} from "../../redux/reducers/admin/modalSlice";
 import { getRoomByUserIdService } from "../../services/bookingService";
 import UserRoomsModal from "../../(components)/(Admin)/(modals)/UserRoomsModal";
 
@@ -112,18 +115,17 @@ const AdminUsers = () => {
   return (
     <AdminDashboardLayout>
       <div>
-      <TopPage
-        title={"Users Page"}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <Table rows={dataResearch} columns={columns} />
-      <UserModal />
-      <UserRoomsModal />
-    </div>
+        <TopPage
+          title={"Users Page"}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+        <Table rows={dataResearch} columns={columns} />
+        <UserModal />
+        <UserRoomsModal />
+      </div>
     </AdminDashboardLayout>
-    
-  )
-}
+  );
+};
 
-export default AdminUsers
+export default AdminUsers;

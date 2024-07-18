@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { storageData } from "../utils/storage";
 import { useEffect, useState } from "react";
 import LoadingGlobal from "../(components)/(Admin)/common/LoadingGlobal";
@@ -9,7 +9,7 @@ import { getUserService } from "../services/userService";
 import { storeAdmin } from "../redux/storeAdmin";
 
 const AdminLayout = (props) => {
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const token = storageData.getData("token");
   const userId = storageData.getData("userId");
 
@@ -24,14 +24,12 @@ const AdminLayout = (props) => {
     setIsLoading(false);
   }, [token, userId]);
   return isLoading ? <LoadingGlobal /> : <div>{props.children}</div>;
-  
-  
-}
+};
 
 export default function AdminLayoutWrapper({ children }) {
-    return (
-      <Provider store={storeAdmin}>
-        <AdminLayout>{children}</AdminLayout>
-      </Provider>
-    );
-  }
+  return (
+    <Provider store={storeAdmin}>
+      <AdminLayout>{children}</AdminLayout>
+    </Provider>
+  );
+}

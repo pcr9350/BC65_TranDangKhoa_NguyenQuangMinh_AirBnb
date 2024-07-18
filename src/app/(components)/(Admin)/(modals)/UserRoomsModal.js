@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Box, Modal, Paper, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserRoomModal } from "../../../redux/reducers/admin/modalSlice";
