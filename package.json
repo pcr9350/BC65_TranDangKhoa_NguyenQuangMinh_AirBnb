@@ -12,10 +12,10 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.16.0",
+    "@mui/icons-material": "^5.16.2",
     "@mui/lab": "^5.0.0-alpha.171",
-    "@mui/material": "^5.16.0",
-    "@mui/material-nextjs": "^5.15.11",
+    "@mui/material": "^5.16.2",
+    "@mui/material-nextjs": "^5.16.2",
     "@mui/x-data-grid": "^7.9.0",
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
@@ -34,6 +34,6 @@
     "postcss": "^8.4.39",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.5"
   }
 }

@@ -1,23 +1,25 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
 // import { storeAdmin } from '../redux/storeAdmin'
 // import Link from 'next/link'
-import Header from '../(components)/(Admin)/Header'
+import Header from "../(components)/(Admin)/Header";
 
 import { Box } from "@mui/material";
-import SideBar from '../(components)/(Admin)/SideBar'
-import DrawerHeader from '../(components)/(Admin)/common/DrawerHeader'
-import ToggleActions from '../(components)/(Admin)/common/ToggleActions'
-import { useRouter } from 'next/navigation'
-import { useDispatch } from 'react-redux'
-import { storageData } from '../utils/storage'
-import { setUser } from '../redux/reducers/admin/userSlice'
-import LoadingGlobal from '../(components)/(Admin)/common/LoadingGlobal'
-import { getUserService } from '../services/userService'
+import SideBar from "../(components)/(Admin)/SideBar";
+import DrawerHeader from "../(components)/(Admin)/common/DrawerHeader";
+import ToggleActions from "../(components)/(Admin)/common/ToggleActions";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { storageData } from "../utils/storage";
+import { setUser } from "../redux/reducers/admin/userSlice";
+import LoadingGlobal from "../(components)/(Admin)/common/LoadingGlobal";
+import { getUserService } from "../services/userService";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import { Toaster } from "react-hot-toast";
+import AdminCustomTheme from "../admin/_app";
 
 const AdminDashboardLayout = (props) => {
-
-
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -36,20 +38,26 @@ const AdminDashboardLayout = (props) => {
     });
   }, [token, userId, router]);
 
-  return isLoading ? (
-    <LoadingGlobal />
-  ) : (
-    <Box sx={{ display: "flex" ,  position:'relative'}}>
-      <Header />
-      <SideBar />
-      <Box component="main" sx={{ flexGrow: 1, p: 3, }}>
-        <DrawerHeader />
-        {props.children}
-        <ToggleActions />
-      </Box>
-    </Box>
+  return (
+    <AppRouterCacheProvider>
+      <AdminCustomTheme>
+        {isLoading ? (
+          <LoadingGlobal />
+        ) : (
+          <Box sx={{ display: "flex", position: "relative" }}>
+            <Toaster />
+            <Header />
+            <SideBar />
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+              <DrawerHeader />
+              {props.children}
+              <ToggleActions />
+            </Box>
+          </Box>
+        )}
+      </AdminCustomTheme>
+    </AppRouterCacheProvider>
   );
-
 };
 
 export default AdminDashboardLayout;
