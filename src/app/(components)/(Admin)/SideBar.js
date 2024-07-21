@@ -23,7 +23,7 @@ import RoomIcon from "@mui/icons-material/Room";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 //   import { useLocation, useNavigate } from "react-router-dom";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const items = [
   {
@@ -59,7 +59,7 @@ const SideBar = () => {
   const pathname = useSearchParams();
   const router = useRouter();
 
-  console.log(window.location?.pathname);
+  // console.log(window.location?.pathname);
 
   const { showSidebar } = useSelector((state) => state.app);
 

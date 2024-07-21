@@ -1,5 +1,5 @@
 module.exports = {
-  important: true,
+  // important: true,
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
