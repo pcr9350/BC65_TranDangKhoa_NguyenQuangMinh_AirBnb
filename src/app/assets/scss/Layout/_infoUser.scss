@@ -15,4 +15,44 @@
         font-size: $fs-25;
         font-weight: 700;
     }
+    .link-update-info {
+        color: $color-black-0;
+        &:hover {
+            color: $color-pink;
+        }
+    }
+    .link-room-user {
+        text-decoration: none;
+    }
+    .text-phong-thue {
+        font-size: $fs-30;
+        font-weight: 600;
+    }
+    .text-room-user {
+        font-size: $fs-15;
+    }
+    .text-room-tien-nghi {
+        font-size: small;
+    }
+    .card-room-user {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; /* Ngăn không cho text xuống dòng */
+        max-width: 400px;
+    }
+    .text-giaTien {
+        font-size: $fs-15;  
+        color: $fw-bold-1; 
+    }
+
+    .card-room {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+    }
+
 }

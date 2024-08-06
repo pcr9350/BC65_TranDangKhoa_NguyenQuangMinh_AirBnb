@@ -372,6 +372,44 @@ a {
   font-size: 25px;
   font-weight: 700;
 }
+.info-user .link-update-info {
+  color: #29303b;
+}
+.info-user .link-update-info:hover {
+  color: #FE6B6E;
+}
+.info-user .link-room-user {
+  text-decoration: none;
+}
+.info-user .text-phong-thue {
+  font-size: 30px;
+  font-weight: 600;
+}
+.info-user .text-room-user {
+  font-size: 15px;
+}
+.info-user .text-room-tien-nghi {
+  font-size: small;
+}
+.info-user .card-room-user {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Ngăn không cho text xuống dòng */
+  max-width: 400px;
+}
+.info-user .text-giaTien {
+  font-size: 15px;
+  color: 700;
+}
+.info-user .card-room {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.info-user .card-room:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
 
 .button-primary {
   background-color: #FE6B6E;
