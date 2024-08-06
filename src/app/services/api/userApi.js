@@ -9,5 +9,5 @@ export const userApi = {
   updateUser: (id, userData) => axiosClient.put(`/users/${id}`, userData),
   deleteUser: (id) => axiosClient.delete(`/users?id=${id}`),
   searchUser: (name) => axiosClient.get(`/users/search/${name}`),
-  uploadAvatar: () => axiosClient.post("/users/upload-avatar"),
+  uploadAvatar: (formFile) => axiosClient.post("/users/upload-avatar", formFile),
 };

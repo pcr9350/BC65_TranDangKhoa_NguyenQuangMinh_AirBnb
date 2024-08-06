@@ -1,0 +1,176 @@
+.text-chu-nha {
+    font-size: $fs-25;
+    text-decoration: underline;
+}
+.icon-award {
+    color: $color-pink;
+}
+.text-room-mota {
+    font-weight: 600;
+    color: $color-pink;
+}
+.imageContainer {
+    .image-avatar-room {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.icon-mota {
+    font-size: $fs-30;
+}
+.text-mota {
+    font-size: $fs-15;
+    .text-decoration-mota {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.mota {
+    .mota-text {
+        font-size: $fs-20;
+    }
+    .mota-text-underline {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.mota-danhgia-underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.bookingForm {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); // Thêm shadow nhẹ
+    /* Room Details Container */
+    .room-details-container {
+        .d-flex { /* Style the combined column */
+            label:first-child {
+              margin-right: 1rem; // Adjust spacing between labels as needed
+            }
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            .so-sao-danh-gia {
+                color: $color-pink;
+            }
+        }
+
+        .form-control-static {
+            padding: 0.375rem 0.75rem; // Add some padding for visual appeal
+            border: 1px solid #ced4da; // Add a subtle border
+            border-radius: 0.25rem; // Add rounded corners
+        }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 767px) {
+        .room-details-container {
+            .col-12 {
+                margin-bottom: 1rem; // Add spacing between elements on smaller screens
+            }
+        }
+    }
+
+    // Một số tinh chỉnh khác để làm đẹp form
+    label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 3px; // Bo góc các input
+    }
+
+    .btn-primary {
+        background-color: $color-pink; // Màu xanh dương mặc định của Bootstrap
+        border: none;
+        &:hover {
+            background-color: $color-pink-1; // Màu đậm hơn khi hover
+        }
+    }
+    .btn-guest-count {
+        background-color: $color-pink;
+        border: none;
+        &:hover {
+            background-color: $color-pink-1; // Màu đậm hơn khi hover
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 15px;
+    }
+}
+
+
+.price-value {
+    /* Style for the price value paragraphs */
+    font-weight: $fw-normal; /* Make the price stand out */
+    text-align: right;  /* Align the price to the right */
+}
+.giaTien {
+    text-decoration: underline;
+}
+.no-spinners {
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      border: none;
+    }
+  
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield; 
+  
+    }
+}
+.price-total {
+    font-size: $fs-25;
+}
+.binh-luan-container {
+    border: 1px solid #dee2e6; // Add border to container
+    padding: 1rem;
+    border-radius: 0.25rem;
+    max-height: 400px; // Set maximum height for scrolling (adjust as needed)
+    overflow-y: auto; // Enable vertical scrolling
+    .card-binhluan {
+        border: none; // Remove default card border
+
+        .card-body {
+            padding: 1rem; // Increase padding for better readability
+            max-height: 180px; /* Adjust as needed */
+            overflow-y: auto;
+            font-size: $fs-15;
+            /* Adjust star icon size */
+            .bi-star-fill {
+                font-size: 1.2rem;
+            }
+            .image-avatar-binhluan {
+                height: $fs-40;
+                width: $fs-40;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.form-binh-luan {
+    .login-message {
+        background-color: $color-yellow-1; /* Light yellow background */
+        border: 1px solid $color-yellow-2; /* Light yellow border */
+        padding: $fs-10;
+        border-radius: $fs-8; /* Optional: Rounded corners */
+    }
+    .btn-primary {
+        background: $color-pink;
+        border: none;
+        &:hover {
+            background: $color-pink-1;
+        }
+    }
+}

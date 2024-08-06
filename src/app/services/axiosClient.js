@@ -5,7 +5,7 @@ export const baseURL = "https://airbnbnew.cybersoft.edu.vn/api";
 
 export const axiosClient = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 30000,
 });
 
 export const tokenCybersoft =
@@ -13,12 +13,15 @@ export const tokenCybersoft =
 
 axiosClient.interceptors.request.use(
   async (config) => {
+    // Chỉ lấy token từ localStorage nếu đang ở phía client (trình duyệt)
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     return {
+      
       ...config,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        Tokencybersoft: tokenCybersoft,
+        Authorization: token ? `Bearer ${token}` : '',
+        TokenCybersoft: tokenCybersoft,
         token: storageData.getData("token"),
       },
     };

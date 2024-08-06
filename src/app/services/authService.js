@@ -1,8 +1,10 @@
 import toast from "react-hot-toast";
 import { userApi } from "./api/userApi";
+
 import { storageData } from "../utils/storage";
 
 export const loginService = async ({ email, password }) => {
+  
   try {
     const data = await userApi.login({ email, password });
     storageData.setData("token", data?.content?.token);

@@ -1,0 +1,9 @@
+.card-home {
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  
+    &:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      transform: translateY(-8px) scale(1.08) rotateX(2deg) rotateY(-3deg);
+      cursor: pointer;
+    }
+  }

@@ -1,0 +1,15 @@
+.room-card {
+    transition: transform 0.2s; // Hiệu ứng chuyển đổi mượt mà
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-5px); // Nâng card lên khi hover
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); // Tăng shadow khi hover
+    }
+    .room-card-image {
+        width: 100%;
+        aspect-ratio: 1 / 1; // Duy trì tỷ lệ khung hình 1:1
+        height: 250px; 
+        object-fit: cover; // Đảm bảo hình ảnh lấp đầy vùng chứa và cắt bớt nếu cần
+    
+    }
+  }

@@ -1,0 +1,18 @@
+.info-user {
+    /* Basic styling for responsiveness */
+    @media (max-width: 767px) {
+        .col-md-4,
+        .col-md-8 {
+            flex: 0 0 auto;
+            width: 100%; /* Make columns full width on small screens */
+        }
+    }
+    .text-danhtinh {
+        font-size: $fs-20;
+        font-weight: 700;
+    }
+    .text-xacnhan {
+        font-size: $fs-25;
+        font-weight: 700;
+    }
+}

@@ -22,7 +22,7 @@ a {
 
 .navbar-customize {
   /* CSS cho menu navbar */
-  position: absolute; /* Đặt menu nằm trên video */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -67,9 +67,28 @@ a {
   color: #e11d48 !important;
 }
 
+.nav-link-page {
+  text-decoration: none;
+}
+
+.nav-link-page-responsive {
+  color: #29303b !important;
+  transition: color 0.5s ease-in-out;
+}
+.nav-link-page-responsive:hover {
+  color: #FE6B6E !important;
+}
+.nav-link-page-responsive.active {
+  color: #FE6B6E !important;
+}
+.nav-link-page-responsive.active:hover {
+  color: #e11d48 !important;
+}
+
 .user-button {
   color: #FE6B6E;
   transition: color 0.5s ease-in-out;
+  font-size: 40px;
 }
 .user-button:hover {
   color: #e11d48;
@@ -122,6 +141,238 @@ a {
   color: #FE6B6E;
 }
 
+.register-user {
+  margin-top: 50px;
+}
+
+.card-home {
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.card-home:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-8px) scale(1.08) rotateX(2deg) rotateY(-3deg);
+  cursor: pointer;
+}
+
+.rooms-card .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà */
+  cursor: pointer;
+  width: 100%;
+}
+.rooms-card .card:hover {
+  transform: translateY(-5px); /* Nâng lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng đậm hơn khi hover */
+}
+.rooms-card .card .card-img-top {
+  width: 100%;
+  aspect-ratio: 1/1;
+  height: 250px;
+  object-fit: cover;
+}
+.rooms-card .card .card-title {
+  font-size: 15px;
+}
+
+.room-card {
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.room-card .room-card-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  height: 250px;
+  object-fit: cover;
+}
+
+.text-chu-nha {
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.icon-award {
+  color: #FE6B6E;
+}
+
+.text-room-mota {
+  font-weight: 600;
+  color: #FE6B6E;
+}
+
+.imageContainer .image-avatar-room {
+  height: 50px;
+  width: 50px;
+}
+
+.icon-mota {
+  font-size: 30px;
+}
+
+.text-mota {
+  font-size: 15px;
+}
+.text-mota .text-decoration-mota {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mota .mota-text {
+  font-size: 20px;
+}
+.mota .mota-text-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mota-danhgia-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bookingForm {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  /* Room Details Container */
+  /* Responsive Adjustments */
+}
+.bookingForm .room-details-container .d-flex { /* Style the combined column */ }
+.bookingForm .room-details-container .d-flex label:first-child {
+  margin-right: 1rem;
+}
+.bookingForm .room-details-container label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.bookingForm .room-details-container label .so-sao-danh-gia {
+  color: #FE6B6E;
+}
+.bookingForm .room-details-container .form-control-static {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+@media (max-width: 767px) {
+  .bookingForm .room-details-container .col-12 {
+    margin-bottom: 1rem;
+  }
+}
+.bookingForm label {
+  font-weight: bold;
+}
+.bookingForm .form-control {
+  border-radius: 3px;
+}
+.bookingForm .btn-primary {
+  background-color: #FE6B6E;
+  border: none;
+}
+.bookingForm .btn-primary:hover {
+  background-color: #e11d48;
+}
+.bookingForm .btn-guest-count {
+  background-color: #FE6B6E;
+  border: none;
+}
+.bookingForm .btn-guest-count:hover {
+  background-color: #e11d48;
+}
+@media (max-width: 768px) {
+  .bookingForm {
+    padding: 15px;
+  }
+}
+
+.price-value {
+  /* Style for the price value paragraphs */
+  font-weight: normal; /* Make the price stand out */
+  text-align: right; /* Align the price to the right */
+}
+
+.giaTien {
+  text-decoration: underline;
+}
+
+.no-spinners {
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */
+}
+.no-spinners::-webkit-outer-spin-button, .no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  border: none;
+}
+.no-spinners[type=number] {
+  -moz-appearance: textfield;
+}
+
+.price-total {
+  font-size: 25px;
+}
+
+.binh-luan-container {
+  border: 1px solid #dee2e6;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.binh-luan-container .card-binhluan {
+  border: none;
+}
+.binh-luan-container .card-binhluan .card-body {
+  padding: 1rem;
+  max-height: 180px; /* Adjust as needed */
+  overflow-y: auto;
+  font-size: 15px;
+  /* Adjust star icon size */
+}
+.binh-luan-container .card-binhluan .card-body .bi-star-fill {
+  font-size: 1.2rem;
+}
+.binh-luan-container .card-binhluan .card-body .image-avatar-binhluan {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+
+.form-binh-luan .login-message {
+  background-color: #fff9c4; /* Light yellow background */
+  border: 1px solid #ffe082; /* Light yellow border */
+  padding: 10px;
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+.form-binh-luan .btn-primary {
+  background: #FE6B6E;
+  border: none;
+}
+.form-binh-luan .btn-primary:hover {
+  background: #e11d48;
+}
+
+.info-user {
+  /* Basic styling for responsiveness */
+}
+@media (max-width: 767px) {
+  .info-user .col-md-4,
+  .info-user .col-md-8 {
+    flex: 0 0 auto;
+    width: 100%; /* Make columns full width on small screens */
+  }
+}
+.info-user .text-danhtinh {
+  font-size: 20px;
+  font-weight: 700;
+}
+.info-user .text-xacnhan {
+  font-size: 25px;
+  font-weight: 700;
+}
+
 .button-primary {
   background-color: #FE6B6E;
   width: 100px;
@@ -154,8 +405,99 @@ a {
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 9999;
+  z-index: 99;
 }
 .back-to-top.visible {
   opacity: 1;
+}
+
+.nav-pills {
+  background-color: #f8f9fa;
+  border-radius: 30px;
+  padding: 10px;
+}
+.nav-pills .nav-item .nav-link {
+  color: #FE6B6E;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 10px;
+  font-weight: 500;
+}
+.nav-pills .nav-item .nav-link:hover {
+  background-color: #f5d5d7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.nav-pills .nav-item .nav-link.active {
+  background-color: #FE6B6E;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.nav-pills .nav-item .nav-link.active:hover {
+  background-color: #FE6B6E;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.nav-pills .nav-item .custom-tab .active:hover {
+  background-color: #FE6B6E;
+}
+.nav-pills .btn-search {
+  background-color: #FE6B6E;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, box-shadow 0.3, transform 0.3s;
+  margin-left: 10px;
+}
+.nav-pills .btn-search:hover {
+  background-color: #e11d48;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+.nav-pills .btn-search i {
+  font-size: 20px;
+}
+
+.flex-fill {
+  flex-basis: 1;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.tab-content-locations {
+  width: 70%;
+  margin: 0 auto;
+}
+.tab-content-locations .location-item {
+  margin: 1% 1%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tab-content-locations .location-item:hover {
+  opacity: 0.8;
+}
+.tab-content-locations .location-item .location-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.tab-content-locations .location-item .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+}
+.tab-content-locations .location-item .location-name {
+  margin-top: 5px;
+  text-align: center;
 }/*# sourceMappingURL=index.css.map */

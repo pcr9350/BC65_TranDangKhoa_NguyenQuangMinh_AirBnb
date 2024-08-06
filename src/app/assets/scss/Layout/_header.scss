@@ -37,6 +37,7 @@
 
 .nav-link-header {
     color: $color-white-0 !important;
+    
     transition: color 0.5s ease-in-out;
     &:hover {
         color: $color-pink !important;
@@ -48,10 +49,27 @@
         }
     }
 }
-
+.nav-link-page {
+    text-decoration: none;
+}
+.nav-link-page-responsive {
+    color: $color-black-0 !important;
+    
+    transition: color 0.5s ease-in-out;
+    &:hover {
+        color: $color-pink !important;
+    }
+    &.active {
+        color: $color-pink !important;
+        &:hover {
+            color: $color-pink-1 !important;
+        }
+    }
+}
 .user-button {
     color: $color-pink;
     transition: color 0.5s ease-in-out;
+    font-size: $fs-40;
     &:hover {
         color: $color-pink-1;
         cursor: pointer;
