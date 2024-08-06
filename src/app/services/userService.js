@@ -66,3 +66,16 @@ export const createUserService = async (user) => {
     return null;
   }
 };
+
+export const updateUserAvatarService = async (formFile) => {
+  try {
+    const updateAvatar = await userApi.uploadAvatar(formFile);
+    if(updateAvatar?.content) {
+      toast.success("Cập nhật avatar thành công");
+      return updateAvatar.content;
+    }
+  } catch (error) {
+    toast.error(error?.updateAvatar?.content);
+    return null;
+  }
+}

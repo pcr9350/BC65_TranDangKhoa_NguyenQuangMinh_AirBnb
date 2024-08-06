@@ -5,7 +5,17 @@ import { roomApi } from "./api/roomApi";
 export const getsLocationService = async () => {
   try {
     const data = await locationApi.gets();
-    return data?.content;
+    return data.content;
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    return null;
+  }
+};
+
+export const getLocationService = async (id) => {
+  try {
+    const data = await locationApi.get(id);
+    return data.content;
   } catch (error) {
     console.error("Error fetching locations:", error);
     return null;

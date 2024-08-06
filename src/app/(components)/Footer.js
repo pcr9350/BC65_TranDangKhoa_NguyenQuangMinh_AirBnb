@@ -61,7 +61,7 @@ const Footer = () => {
         <ul className="list-inline text-start">
             <li className="list-inline-item mx-2"> <Link href={'/'} className='home-footer-link'><i className="fa fa-globe"></i> Tiếng Việt (VN)</Link></li>
             <li className="list-inline-item mx-2"><Link href={'/'} className='home-footer-link'>USD</Link></li>
-            <li className="list-inline-item mx-2">
+            {/* <li className="list-inline-item mx-2">
             <span style={{ textDecoration: 'underline' }}>Triển khai dự án:</span>
             <span className='mx-2'>
             <MdPerson
@@ -75,11 +75,11 @@ const Footer = () => {
             />
             Nguyễn Quang Minh
             </span>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
-
+              
       </footer>
   )
 }

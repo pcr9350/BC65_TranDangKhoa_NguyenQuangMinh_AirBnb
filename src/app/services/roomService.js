@@ -32,6 +32,16 @@ export const getRoomByLocationService = async (idLocation) => {
   }
 };
 
+export const getRoomByID = async (id) => {
+  try {
+    const data = await roomApi.getRoom(id);
+    return data?.content;
+  } catch (error) {
+    console.error("Error fetching room by id:", error);
+    return null;
+  }
+};
+
 export const updateRoomService = async (roomData) => {
   try {
     const data = await roomApi.updateRoom(roomData.id, roomData);

@@ -1,0 +1,23 @@
+.rooms-card {
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng mượt mà */
+        cursor: pointer; // Biến con trỏ thành hình bàn tay
+        width: 100%;
+
+        &:hover {
+          transform: translateY(-5px); /* Nâng lên khi hover */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng đậm hơn khi hover */
+        }
+
+        .card-img-top {
+          width: 100%;
+          aspect-ratio: 1 / 1; // Duy trì tỷ lệ khung hình 1:1
+          height: 250px; 
+          object-fit: cover; // Đảm bảo hình ảnh lấp đầy vùng chứa và cắt bớt nếu cần
+        }
+        .card-title {
+          font-size: $fs-15;
+        }
+    }
+}
+

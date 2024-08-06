@@ -21,6 +21,17 @@ export const updateBookingService = async (bookingData) => {
   }
 };
 
+export const createBookingService = async (bookingData) => {
+  try {
+    const data = await bookingApi.post(bookingData);
+    toast.success("Đặt phòng thành công");
+    return data?.content;
+  } catch (error) {
+    console.error("Error create booking:", error);
+    return null;
+  }
+};
+
 export const deleteBookingService = async (idBooking) => {
   try {
     await bookingApi.delete(idBooking);

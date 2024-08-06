@@ -10,7 +10,25 @@ const nextConfig = {
         },
         {
             protocol: 'https',
-            hostname: 'airbnbnew.cybersoft.edu.vn/',
+            hostname: "airbnbnew.cybersoft.edu.vn",
+            port: '',
+            pathname: '/**'
+        },
+        {
+            protocol: 'https',
+            hostname: "dynamic-media-cdn.tripadvisor.com",
+            port: '',
+            pathname: '/**'
+        },
+        {
+            protocol: 'https',
+            hostname: "phunugioi.com",
+            port: '',
+            pathname: '/**'
+        },
+        {
+            protocol: 'https',
+            hostname: "avatars.githubusercontent.com",
             port: '',
             pathname: '/**'
         },
@@ -23,6 +41,18 @@ const nextConfig = {
         {
             protocol: 'http',
             hostname: 'w3.org',
+            port: '',
+            pathname: '/**'
+        },
+        {
+            protocol: 'http',
+            hostname: 'alicdn.com',
+            port: '',
+            pathname: '/**'
+        },
+        {
+            protocol: 'http',
+            hostname: 'sc04.alicdn.com',
             port: '',
             pathname: '/**'
         },
