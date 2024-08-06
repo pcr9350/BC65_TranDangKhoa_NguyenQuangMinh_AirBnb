@@ -69,7 +69,7 @@ const Register = () => {
       onSubmit={handleSubmit}
     >
       {({ values, setFieldValue, errors, touched }) => (           
-        <Form className="container   
+        <Form className="container 
  mt-1">
           <div className="mb-1">
             <Field as={TextField} name="name" label="Tên người dùng" fullWidth error={touched.name && Boolean(errors.name)} helperText={touched.name && errors.name} />
