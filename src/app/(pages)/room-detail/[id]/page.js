@@ -161,6 +161,18 @@ const RoomDetail = (props) => {
     const diffMonths = Math.floor(diffDays / 30); // Calculate approximate months
     return `${diffMonths} tháng trước`;
   };
+
+  //Popup Image
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleImageClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className="container mt-4">
       {room && (
@@ -168,13 +180,41 @@ const RoomDetail = (props) => {
           <h2 className="mb-3">{room.tenPhong}</h2>
           <span><i className="fa fa-award icon-award mb-3"></i> Chủ nhà siêu cấp {!locations ? "" : <Link className='mx-3' href={`/rooms/${LocationLatin}`}>{locations?.tinhThanh}, Việt Nam</Link>}</span>
           {/* Carousel */}
-          <div id="carouselExampleFade" className="carousel slide carousel-fade mb-3" data-bs-ride="carousel">
+          {/* <div id="carouselExampleFade" className="carousel slide carousel-fade mb-3" data-bs-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <Image src={room.hinhAnh} width={1400} height={350} className="d-block w-100 rounded" alt="..." />
               </div>
             </div>
+          </div> */}
+          <div
+ className="mb-3"> {/* Loại bỏ các lớp carousel */}
+      <div className="carouselImageContainer" onClick={handleImageClick}>
+        <Image 
+          src={room.hinhAnh} 
+          width={1400} 
+          height={350} 
+          className="d-block w-100 rounded carouselImage" 
+          alt="..." 
+        />
+      </div>
+
+      {showPopup && (
+        <div className="popupOverlay" onClick={handleClosePopup}>
+          <div className="popupContent">
+            <Image
+              src={room.hinhAnh}
+              width={1200} // Hoặc kích thước khác tùy ý
+              height={350}
+              alt="..."
+              className="img-fluid"
+            />
+            {/* Thêm nội dung khác vào popup nếu cần */}
+            <button className="btn btn-secondary btn-image-popup mt-2" onClick={handleClosePopup}>Đóng</button>
           </div>
+        </div>
+      )}
+    </div>
 
           <Formik
             initialValues={{
@@ -189,7 +229,7 @@ const RoomDetail = (props) => {
             {({ values, errors, touched, handleChange, setFieldValue }) => (
               <Form>
                 <div className='row'>
-                  <div className='col-md-7'>
+                  <div className='col-md-6 col-lg-7'>
                     <div className='row'>
                       <div className='col-9'>
                         <h5 className='mb-1 fw-bold'>
@@ -266,14 +306,15 @@ const RoomDetail = (props) => {
                     </div>
 
                   </div>
-                  <div className='col-md-5'>
+                  <div className='col-md-6 col-lg-5
+                  '>
                     <div className='bookingForm'>
                       <div className="room-details-container">
                         <div className="row">
-                          <div className="col-3 mb-3">
+                          <div className="col-4 col-lg-3 mb-3">
                             <label htmlFor="giaTien">{room.giaTien}$/đêm</label>
                           </div>
-                          <div className="col-9 mb-3 d-flex align-items-center justify-content-end"> {/* Combined column with flexbox */}
+                          <div className="col-8 col-lg-9 mb-3 d-flex align-items-center justify-content-end"> {/* Combined column with flexbox */}
                             <label htmlFor="soSao" className="me-2">
                               <i className="fa fa-star so-sao-danh-gia"></i>{' '}
                               {soLuongBinhLuan > 0 ? trungBinhDanhGia : "Chưa có đánh giá"}
@@ -285,7 +326,7 @@ const RoomDetail = (props) => {
                         </div>
                       </div>
                       <div className="row"> {/* Added row wrapper */}
-                        <div className="col-md-6 mb-3"> {/* Check-in date column */}
+                        <div className="col-6 mb-3"> {/* Check-in date column */}
                           <label htmlFor="checkInDate">Nhận phòng</label>
                           <input
                             type="date"
@@ -298,7 +339,7 @@ const RoomDetail = (props) => {
                           />
                           <ErrorMessage name="checkInDate" component="div" className="text-danger" />
                         </div>
-                        <div className="col-md-6 mb-3"> {/* Check-out date column */}
+                        <div className="col-6 mb-3"> {/* Check-out date column */}
                           <label htmlFor="checkOutDate">Trả phòng</label>
                           <input
                             type="date"

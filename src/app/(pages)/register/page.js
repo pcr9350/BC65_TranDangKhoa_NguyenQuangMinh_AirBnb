@@ -78,7 +78,7 @@ const Register = () => {
           <Field as={TextField} name="email" label="Email" fullWidth error={touched.email && Boolean(errors.email)} helperText={touched.email && errors.email} />
           </div>
           <div className="mb-1">
-          <Field as={TextField} name="password" label="Mật khẩu" fullWidth error={touched.password && Boolean(errors.password)} helperText={touched.password && errors.password} />
+          <Field as={TextField} name="password" type="password" label="Mật khẩu" fullWidth error={touched.password && Boolean(errors.password)} helperText={touched.password && errors.password} />
           </div>
           <div className="mb-1">
           <Field as={TextField} name="phone" label="Số điện thoại" fullWidth error={touched.phone && Boolean(errors.phone)} helperText={touched.phone && errors.phone} />
