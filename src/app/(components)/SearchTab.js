@@ -55,6 +55,9 @@ const SearchTab = () => {
             alert('Vui lòng chọn địa điểm trước khi tìm kiếm.');
           }
     };
+    const handleGuestCountChange = (increment) => {
+        setGuestCount(prevCount => Math.max(1, prevCount + increment)); // Đảm bảo guestCount >= 1
+      };
     return (
         <div className="container mt-4">
             <div className="d-flex justify-content-around rounded-pill bg-secondary p-2">
@@ -94,16 +97,14 @@ const SearchTab = () => {
                     </li>
 
                 </ul>
-
-
             </div>
 
-            <div className="tab-content tab-content-locations mt-3">
+            <div className="tab-content  mt-3">
             {activeTab === 'location' && (
-                    <div className="tab-pane active">
+                    <div className="tab-pane tab-content-locations active">
                         <div className="row">
                             {locations?.map((location, index) => (
-                                <div key={index} className="col-md-3 col-sm-6 mb-3"> {/* Điều chỉnh kích thước cột */}
+                                <div key={index} className="col-6 col-md-4 mb-3"> {/* Điều chỉnh kích thước cột */}
                                     <div
                                         className="card location-item"
                                         onClick={() => {
@@ -128,27 +129,51 @@ const SearchTab = () => {
                     </div>
                 )}
                 {activeTab === 'dates' && (
-                    <div className="tab-pane active">
-                        <div className="form-group">
+                    <div className="tab-pane tab-content-date active">
+                        <div className='row'>
+                        <div className="form-group col-6">
                             <label htmlFor="checkInDate">Nhận phòng:</label>
                             <input type="date" className="form-control" id="checkInDate" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group col-6">
                             <label htmlFor="checkOutDate">Trả
                                 phòng:</label>
                             <input type="date" className="form-control" id="checkOutDate" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
                         </div>
-
-                    </div>
-                )}
-                {activeTab === 'guests' && (
-                    <div className="tab-pane active">
-                        <div className="form-group">
-                            <label htmlFor="guestCount">Số lượng khách:</label>
-                            <input type="number" className="form-control" id="guestCount" value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value, 10))} />
                         </div>
                     </div>
                 )}
+                {activeTab === 'guests' && (
+        <div className="tab-pane tab-content-guest active">
+          <div className="form-group d-flex align-items-center">
+            <label htmlFor="guestCount" className="me-2">Số lượng khách:</label>
+            <div className="input-group w-50">
+              <button 
+                className="btn btn-header-guest-count" 
+                type="button" 
+                onClick={() => handleGuestCountChange(-1)}
+                disabled={guestCount === 1} // Vô hiệu hóa nút giảm khi guestCount = 1
+              >
+                <i className="fa fa-minus"></i>
+              </button>
+              <input 
+                type="number" 
+                className="form-control text-center" 
+                id="guestCount" 
+                value={guestCount} 
+                readOnly // Chỉ cho phép thay đổi thông qua nút
+              />
+              <button 
+                className="btn btn-header-guest-count" 
+                type="button" 
+                onClick={() => handleGuestCountChange(1)}
+              >
+                <i className="fa fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
             </div>
         </div>
     )

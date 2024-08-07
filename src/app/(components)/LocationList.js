@@ -62,7 +62,7 @@ const LocationList = () => {
                 .replace(/Đ/g, 'D')
                 .replace(/\s+/g, '-')
                 .toLowerCase();
-              dispatch(setLocationsID({id: location.id}));
+              dispatch(setLocationsID(location));
               router.push(`/rooms/${selectedLocationLatin}`); // Chuyển trang
             }}
           >

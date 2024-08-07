@@ -174,3 +174,41 @@
         }
     }
 }
+
+.carouselImageContainer {
+    cursor: pointer; // Thay đổi con trỏ chuột khi hover
+  
+    .carouselImage {
+        transition: filter 0.3s ease; // Chuyển đổi filter (độ mờ) mượt mà
+        &:hover {
+            filter: brightness(0.6); // Giảm độ sáng xuống 80% khi hover
+        }
+    }
+  }
+  
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    z-index: 1000; // Đảm bảo popup nằm trên các phần tử khác
+  }
+  
+  .popupContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 80%; // Giới hạn kích thước tối đa của popup
+    .btn-image-popup {
+        background-color: $color-pink;
+        border: none;
+        &:hover {
+            background-color: $color-pink-1; // Màu đậm hơn khi hover
+        }
+    }
+  }
