@@ -155,6 +155,26 @@ a {
   margin-top: 50px;
 }
 
+.btn-dang-nhap {
+  background-color: #FE6B6E !important;
+  color: #fff !important;
+  border: none !important;
+  width: 150px;
+}
+.btn-dang-nhap:hover {
+  background-color: #e11d48 !important;
+}
+
+.btn-dang-ki {
+  background-color: #686f7a !important;
+  color: #fff !important;
+  border: none !important;
+  width: 150px;
+}
+.btn-dang-ki:hover {
+  background-color: #505763 !important;
+}
+
 .card-home {
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
@@ -198,6 +218,15 @@ a {
   object-fit: cover;
 }
 
+@media (max-width: 768px) {
+  .map-container {
+    margin-bottom: 25px;
+  }
+  .map-container .google-map-content {
+    border-radius: 10px;
+    height: 250px;
+  }
+}
 .text-chu-nha {
   font-size: 25px;
   text-decoration: underline;
@@ -368,6 +397,10 @@ a {
   cursor: pointer;
 }
 .carouselImageContainer .carouselImage {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 450px;
   transition: filter 0.3s ease;
 }
 .carouselImageContainer .carouselImage:hover {
@@ -391,7 +424,16 @@ a {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  max-width: 80%;
+  width: 70%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow: auto;
+}
+.popupContent .image-content-pop-up {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
 }
 .popupContent .btn-image-popup {
   background-color: #FE6B6E;
