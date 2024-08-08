@@ -177,8 +177,12 @@
 
 .carouselImageContainer {
     cursor: pointer; // Thay đổi con trỏ chuột khi hover
-  
+    
     .carouselImage {
+        object-fit: cover; // Hoặc object-fit: cover; tùy theo cách bạn muốn hiển thị ảnh
+        width: 100%; // Chiếm toàn bộ chiều rộng của container
+        height: auto; // Tự động điều chỉnh chiều cao để giữ tỷ lệ
+        max-height: 450px;
         transition: filter 0.3s ease; // Chuyển đổi filter (độ mờ) mượt mà
         &:hover {
             filter: brightness(0.6); // Giảm độ sáng xuống 80% khi hover
@@ -191,19 +195,28 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; // Đảm bảo overlay che phủ toàn bộ màn hình
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
-    justify-content: center; 
-    z-index: 1000; // Đảm bảo popup nằm trên các phần tử khác
+    justify-content: center;
+    z-index: 1000;
   }
   
   .popupContent {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    max-width: 80%; // Giới hạn kích thước tối đa của popup
+    width: 70%;
+    max-width: 800px; // Thiết lập chiều rộng tối đa để popup không quá lớn
+    max-height: 80vh; // Giới hạn chiều cao tối đa so với viewport
+    overflow: auto; // Thêm thanh cuộn nếu nội dung quá dài
+    .image-content-pop-up {
+        object-fit: cover; // Hoặc object-fit: cover; tùy theo cách bạn muốn hiển thị ảnh
+        width: 100%; // Chiếm toàn bộ chiều rộng của container
+        height: auto; // Tự động điều chỉnh chiều cao để giữ tỷ lệ
+        max-height: 50vh;
+    }
     .btn-image-popup {
         background-color: $color-pink;
         border: none;

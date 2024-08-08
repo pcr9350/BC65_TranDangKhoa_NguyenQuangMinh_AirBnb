@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { loginService } from "../../services/authService";
+import { loginServiceUser } from "../../services/authService";
 import { useRouter } from "next/navigation";
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
@@ -22,9 +23,13 @@ const Login = () => {
     setIsLoading(true);
     e.preventDefault();
 
-    loginService(data).then((res) => {
-      if (res) {
+    loginServiceUser(data).then((res) => {
+      if (res === true) {
+        alert("Đăng nhập thành công")
         router.push("/");
+        setIsLoading(false);
+      } else {
+        alert(`${res} Vui lòng thử lại.`);
         setIsLoading(false);
       }
     });
@@ -71,14 +76,22 @@ const Login = () => {
                 }
               />
             </div>
-            <Button
+            <div className="row">
+                <div className="col-6">
+                <button
               type="submit"
               disabled={isLoading}
-              variant="outlined"
-              color="primary"
+              className="btn btn-dang-nhap" // Sử dụng các class của Bootstrap
             >
               {isLoading ? <CircularProgress size={24} /> : "Đăng nhập"}
-            </Button>
+            </button>
+                </div>
+                <div className="col-6 text-end">
+                <Link href={"/register"} className="btn btn-dang-ki">Đăng kí <i className="fa fa-hand-point-right"></i></Link>
+                </div>
+            </div>
+            
+            
           </form>
         </div>
       </div>

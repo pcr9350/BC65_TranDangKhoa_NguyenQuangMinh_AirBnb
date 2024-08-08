@@ -15,3 +15,15 @@ export const loginService = async ({ email, password }) => {
     return false;
   }
 };
+export const loginServiceUser = async ({ email, password }) => {
+  
+  try {
+    const data = await userApi.login({ email, password });
+    storageData.setData("token", data?.content?.token);
+    storageData.setData("userId", data?.content?.user?.id);
+    return true;
+  } catch (error) {
+    toast.error(error?.data?.content);
+    return error?.data?.content;
+  }
+};
