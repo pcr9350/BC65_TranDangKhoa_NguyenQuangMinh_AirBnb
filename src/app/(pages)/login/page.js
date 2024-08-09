@@ -81,7 +81,7 @@ const Login = () => {
                 <button
               type="submit"
               disabled={isLoading}
-              className="btn btn-dang-nhap" // Sử dụng các class của Bootstrap
+              className="btn btn-dang-nhap"
             >
               {isLoading ? <CircularProgress size={24} /> : "Đăng nhập"}
             </button>
