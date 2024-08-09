@@ -14,13 +14,13 @@ export const tokenCybersoft =
 axiosClient.interceptors.request.use(
   async (config) => {
     // Chỉ lấy token từ localStorage nếu đang ở phía client (trình duyệt)
-    const token =
-      typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     return {
+      
       ...config,
       headers: {
         "Content-Type": "application/json",
-        Authorization: token ? `Bearer ${token}` : "",
+        Authorization: token ? `Bearer ${token}` : '',
         TokenCybersoft: tokenCybersoft,
         token: storageData.getData("token"),
       },
@@ -34,22 +34,17 @@ axiosClient.interceptors.response.use(
     if (response && response.data) return response.data;
     return response;
   },
-  // (error) => {
-  //   if (error.response) {
-  //     console.log(error.response.data);
-  //     console.log(error.response.status);
-  //     console.log(error.response.headers);
-  //   } else if (error.request) {
-  //     console.log("No response from server");
-  //     console.log(error.request);
-  //   } else {
-  //     console.log("Error", error.message);
-  //   }
-  //   return Promise.reject(error);
-  // }
-  (err) => {
-    if (!err.response) {
+  (error) => {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log("No response from server");
+      console.log(error.request);
+    } else {
+      console.log("Error", error.message);
     }
-    throw err.response;
+    return Promise.reject(error.response);
   }
 );

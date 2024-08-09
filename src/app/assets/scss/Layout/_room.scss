@@ -13,3 +13,14 @@
     
     }
   }
+  
+  // Responsive cho map
+  @media (max-width: 768px) { 
+    .map-container {
+      margin-bottom: $mg-25;
+      .google-map-content {
+        border-radius: 10px;
+        height: 250px;
+      }
+    }
+  }

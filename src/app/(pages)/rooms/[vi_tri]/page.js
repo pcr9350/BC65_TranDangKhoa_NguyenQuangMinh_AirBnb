@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 //import thư viện google map
 // import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMapsEmbed } from '@next/third-parties/google'
 
 const ViTri = (props) => {
   const router = useRouter();
@@ -38,37 +39,6 @@ const ViTri = (props) => {
     });
   };
 
-// xử lý google maps
-// const [map, setMap] = useState(null);
-//   const googleMapRef = useRef();
-
-//   useEffect(() => {
-//     const googleMapScript = document.createElement('script');
-//     googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBEJFAqiOz1jmwhZIWbxe1ozz95X1UQDOA&libraries=places`; 
-//     window.document.head.appendChild(googleMapScript);   
-
-
-//     googleMapScript.addEventListener('load', () => {
-//       if (window.google && window.google.maps) {
-//         const geocoder = new window.google.maps.Geocoder();
-//         geocoder.geocode({ address: locations.tinhThanh }, (results, status) => {
-//           if (status === "OK" && results[0]) {
-//             const { lat, lng } = results[0].geometry.location;
-//             setMap({ lat, lng }); // Lưu ý không gọi lat() và lng()
-//             const map = new window.google.maps.Map(googleMapRef.current, {
-//               center: { lat, lng },
-//               zoom: 8, // Tùy chọn mức zoom bạn muốn
-//             });
-//             new window.google.maps.Marker({ // Thêm marker cho vị trí tìm được
-//               map,
-//               position: { lat, lng },
-//             });
-//           }
-//         });
-//       }
-//     });
-//   }, [locations.tinhThanh]);
-
 
   return (
     <div className="container mt-4">
@@ -77,7 +47,7 @@ const ViTri = (props) => {
       <h2>Chỗ ở tại khu vực bản đồ đã chọn</h2>
       <div className="row">
 
-        <div className="col-md-6 d-flex flex-wrap">
+        <div className=" col-12 col-md-6 d-flex flex-wrap">
           {rooms.map((room) => (
             <div key={room.id} className="card room-card mb-3 shadow-sm position-relative" onClick={() => {
               dispatch(setSearch({
@@ -139,11 +109,18 @@ const ViTri = (props) => {
             </div>
           ))}
         </div>
-        <div className="col-md-6">
+        <div className="col-12 col-md-6 map-container"> {/* Thêm class và map-container */}
           {/* Chèn code Google Maps vào đây */}
-          {/* {map && (
-        <div ref={googleMapRef} style={{ width: '100%', height: '500px' }} />
-      )} */}
+          <GoogleMapsEmbed
+            apiKey="AIzaSyCRrLc9FWNPBvyMMh42rYuViT4WMABxv-8"
+            height={600}
+            width="100%"
+            mode="place"
+            zoom='13'
+            language='vi'
+            q={locations.tinhThanh} // Lấy q từ locations
+            className="google-map-content"
+          />
         </div>
       </div>
     </div>
