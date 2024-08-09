@@ -5,7 +5,6 @@ import { loginService } from "../services/authService";
 import { useRouter } from "next/navigation";
 import { Button, CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
-import toast from "react-hot-toast";
 const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
@@ -24,17 +23,12 @@ const AdminLogin = () => {
     setIsLoading(true);
     e.preventDefault();
 
-    try {
-      loginService(data).then((res) => {
-        if (res) {
-          router.push("/admin/users");
-        }
-      });
-    } catch (error) {
-      console.log({ error });
-    } finally {
-      setIsLoading(false);
-    }
+    loginService(data).then((res) => {
+      if (res) {
+        router.push("/admin/users");
+        setIsLoading(false);
+      }
+    });
   };
 
   return (
