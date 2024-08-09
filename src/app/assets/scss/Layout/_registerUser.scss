@@ -2,24 +2,3 @@
     margin-top: 50px;
 
 }
-
-.btn-dang-nhap {
-    background-color: $color-pink !important;
-    color: $color-white-0 !important;
-    border: none !important;
-    width: 150px;
-    &:hover {
-        background-color: $color-pink-1 !important;
-    }
-}
-
-.btn-dang-ki {
-    background-color: $color-gray-4 !important;
-    color: $color-white-0 !important;
-    border: none !important;
-    width: 150px;
-    
-    &:hover {
-        background-color: $color-black-light !important;
-    }
-}
