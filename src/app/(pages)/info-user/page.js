@@ -9,12 +9,13 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserService, updateUserAvatarService, updateUserService } from '@/app/services/userService';
-import Compressor from 'compressorjs';
+
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { setUser } from '@/app/redux/reducers/home/userSlice';
 import { resetBookingRooms, setBookingRooms } from '@/app/redux/reducers/home/bookingRoomSlice';
+import toast from 'react-hot-toast';
 dayjs.extend(customParseFormat);
 dayjs.extend(isSameOrBefore);// Kéo dài dayjs để hỗ trợ phân tích định dạng tùy chỉnh
 
@@ -122,11 +123,11 @@ const InfoUser = () => {
       await updateUserService(values);
       const userData = await getUserService(user.id);
       dispatch(setUser(userData));
-      alert('Cập nhật thông tin thành công');
+      toast.success('Cập nhật thông tin thành công');
       setShowModalUpdate(false);
     }
     catch (error) {
-      alert('Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại.');
+      toast.error('Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại.');
     }
   };
 

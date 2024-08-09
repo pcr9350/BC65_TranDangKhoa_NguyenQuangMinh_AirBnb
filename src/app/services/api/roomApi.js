@@ -1,4 +1,3 @@
-
 import { axiosClient } from "../axiosClient";
 
 export const roomApi = {
@@ -10,5 +9,4 @@ export const roomApi = {
   updateImage: () => axiosClient.put(`/phong-thue/upload-hinh-phong`),
   getRoomByLocation: (id) =>
     axiosClient.get(`/phong-thue/lay-phong-theo-vi-tri?maViTri=${id}`), // query = maViTri (string)
-
 };
