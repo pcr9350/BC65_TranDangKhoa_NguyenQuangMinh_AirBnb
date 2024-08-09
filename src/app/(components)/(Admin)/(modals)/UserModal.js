@@ -232,7 +232,7 @@ const UserModal = () => {
             value={
               type === "edit"
                 ? convertDateToISO(userData?.birthday)
-                : userData?.birthday
+                : userData?.birthday || new Date()
             }
             onChange={handleChangeData}
             required

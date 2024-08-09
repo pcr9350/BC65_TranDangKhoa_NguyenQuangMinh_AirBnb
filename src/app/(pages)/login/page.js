@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { loginServiceUser } from "../../services/authService";
+import { loginService } from "../../services/authService";
 import { useRouter } from "next/navigation";
-import { CircularProgress } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
-import Link from "next/link";
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
@@ -23,13 +22,9 @@ const Login = () => {
     setIsLoading(true);
     e.preventDefault();
 
-    loginServiceUser(data).then((res) => {
-      if (res === true) {
-        alert("Đăng nhập thành công")
+    loginService(data).then((res) => {
+      if (res) {
         router.push("/");
-        setIsLoading(false);
-      } else {
-        alert(`${res} Vui lòng thử lại.`);
         setIsLoading(false);
       }
     });
@@ -76,22 +71,14 @@ const Login = () => {
                 }
               />
             </div>
-            <div className="row">
-                <div className="col-6">
-                <button
+            <Button
               type="submit"
               disabled={isLoading}
-              className="btn btn-dang-nhap"
+              variant="outlined"
+              color="primary"
             >
               {isLoading ? <CircularProgress size={24} /> : "Đăng nhập"}
-            </button>
-                </div>
-                <div className="col-6 text-end">
-                <Link href={"/register"} className="btn btn-dang-ki">Đăng kí <i className="fa fa-hand-point-right"></i></Link>
-                </div>
-            </div>
-            
-            
+            </Button>
           </form>
         </div>
       </div>

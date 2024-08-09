@@ -1,5 +1,5 @@
-'use client'
-import AdminDashboardLayout from '@/app/templates/AdminDashboardLayout'
+"use client";
+import AdminDashboardLayout from "@/app/templates/AdminDashboardLayout";
 import { useEffect, useState } from "react";
 import Table from "../../(components)/(Admin)/common/Table";
 import TopPage from "../../(components)/(Admin)/TopPage";
@@ -255,7 +255,7 @@ const AdminRooms = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getRoomByLocationService('1').then((data) => {
+    getsRoomService().then((data) => {
       setRows(data);
     });
     getsLocationService().then((data) => setLocations(data));
@@ -271,6 +271,12 @@ const AdminRooms = () => {
   }, [searchQuery, rows]);
 
   useEffect(() => {
+    if (optionSelected === "all") {
+      getsRoomService().then((data) => {
+        setRows(data);
+      });
+      // getsLocationService().then((data) => setLocations(data));
+    }
     if (!optionSelected) return;
     getRoomByLocationService(optionSelected).then((data) =>
       setDataResearch(data)
@@ -295,22 +301,28 @@ const AdminRooms = () => {
         setDataResearch(dataResearch.filter((row) => row.id !== id));
       });
   };
+
   return (
     <AdminDashboardLayout>
       <div>
-      <TopPage
-        title={"Rooms Page"}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        options={locations}
-        setOptions={setOptionSelected}
-      />
-      <Table rows={dataResearch} columns={columns} height={100} />
-      <RoomModal />
-    </div>
+        <TopPage
+          title={"Rooms Page"}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          options={[
+            {
+              id: "all",
+              tenViTri: "Tất cả",
+            },
+            ...locations,
+          ]}
+          setOptions={setOptionSelected}
+        />
+        <Table rows={dataResearch} columns={columns} height={100} />
+        <RoomModal />
+      </div>
     </AdminDashboardLayout>
-    
-  )
-}
+  );
+};
 
-export default AdminRooms
+export default AdminRooms;
