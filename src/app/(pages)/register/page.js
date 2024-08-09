@@ -15,6 +15,7 @@ import {
 import { createUserService } from '@/app/services/userService';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Vui lòng nhập tên người dùng'),
@@ -46,12 +47,13 @@ const Register = () => {
         try {
             const data = { ...values, role: 'USER', birthday: dayjs(values.birthday).format('DD/MM/YYYY')};
             await createUserService(data);
-            toast.success('Đăng kí user thành công');
+            alert('Đăng kí user thành công');
             router.push('/login');
             setIsLoading(false);
         }
         catch (error) {
             console.log('Lỗi đăng kí', error);
+            setIsLoading(false);
         }
       }
   return (
@@ -105,14 +107,20 @@ const Register = () => {
             {touched.gender && Boolean(errors.gender) && <div className="text-danger">{errors.gender}</div>}
           </FormControl>
           </div>
-          <Button
+          <div className="row">
+                <div className="col-6">
+          <button
               type="submit"
               disabled={isLoading}
-              variant="outlined"
-              color="primary"
+              className="btn btn-dang-nhap" // Sử dụng các class của Bootstrap
             >
               {isLoading ? <CircularProgress size={24} /> : "Đăng kí"}
-            </Button>
+            </button>
+            </div>
+                <div className="col-6 text-end">
+                <Link href={"/login"} className="btn btn-dang-ki">Đăng nhập <i className="fa fa-hand-point-right"></i></Link>
+                </div>
+                </div>
         </Form>
         
       )}
