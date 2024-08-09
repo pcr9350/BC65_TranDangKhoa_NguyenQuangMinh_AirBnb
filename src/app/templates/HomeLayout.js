@@ -12,19 +12,12 @@ import { store } from '../redux/store';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import AdminCustomTheme from '../admin/_app';
 
-import { NextUIProvider } from '@nextui-org/react';
-import NextNProgress from 'nextjs-progressbar';
+
 const HomeLayout = (props) => {
 
   return (
     <>
-      <NextUIProvider>
-      <NextNProgress
-  color="#f00" // Màu đỏ
-  startPosition={0.3} // Bắt đầu từ 30%
-  stopDelayMs={200} // Delay 200ms trước khi ẩn
-  height={3} // Chiều cao 3px
-/>
+      
         <Provider store={store}>
           <AppRouterCacheProvider>
 
@@ -43,7 +36,7 @@ const HomeLayout = (props) => {
 
           </AppRouterCacheProvider>
         </Provider>
-      </NextUIProvider>
+      
 
     </>
 
