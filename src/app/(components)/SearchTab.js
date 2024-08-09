@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocationsID } from '../redux/reducers/home/locationSlice';
 import { setSearch } from '../redux/reducers/home/searchSlice';
-import { Spinner } from 'react-bootstrap'; // Import Spinner từ react-bootstrap
+
 
 const SearchTab = () => {
     const router = useRouter();
@@ -21,21 +21,11 @@ const SearchTab = () => {
     const { search } = useSelector((state) => state.search)
     const dispatch = useDispatch();
     
-    const [isLoading, setIsLoading] = useState(true); // Thêm state isLoading
-
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true); // Bắt đầu loading
-            try {
-                await getsLocationService().then((res) => setLocations(res));
-            } catch (error) {
-                console.error("Error fetching locations:", error);
-                // Xử lý lỗi nếu cần (ví dụ: hiển thị thông báo lỗi)
-            } finally {
-                setIsLoading(false); // Kết thúc loading, dù thành công hay thất bại
-            }
-        };
-        fetchData();
+            await getsLocationService().then((res) => setLocations(res));
+          };
+          fetchData();
     }, []);
 
     const handleTabClick = (tab) => {
@@ -109,16 +99,9 @@ const SearchTab = () => {
                 </ul>
             </div>
 
-            <div className="tab-content mt-3">
+            <div className="tab-content  mt-3">
             {activeTab === 'location' && (
                     <div className="tab-pane tab-content-locations active">
-                        {isLoading ? ( // Hiển thị Spinner nếu đang loading
-                            <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}> {/* Điều chỉnh chiều cao theo ý muốn */}
-                                <Spinner animation="border" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </Spinner>
-                            </div>
-                        ) : ( // Hiển thị danh sách locations nếu đã load xong
                         <div className="row">
                             {locations?.map((location, index) => (
                                 <div key={index} className="col-6 col-md-4 mb-3"> {/* Điều chỉnh kích thước cột */}
@@ -143,7 +126,6 @@ const SearchTab = () => {
                                 </div>
                             ))}
                         </div>
-                    )}
                     </div>
                 )}
                 {activeTab === 'dates' && (

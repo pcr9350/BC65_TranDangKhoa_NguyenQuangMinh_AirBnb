@@ -194,7 +194,7 @@ const RoomDetail = (props) => {
           src={room.hinhAnh} 
           width={1400} 
           height={350} 
-          className="d-block w-100 rounded carouselImage img-fluid"
+          className="d-block w-100 rounded carouselImage" 
           alt="..." 
         />
       </div>
@@ -207,7 +207,7 @@ const RoomDetail = (props) => {
               width={1200} // Hoặc kích thước khác tùy ý
               height={350}
               alt="..."
-              className="img-fluid image-content-pop-up"
+              className="img-fluid"
             />
             {/* Thêm nội dung khác vào popup nếu cần */}
             <button className="btn btn-secondary btn-image-popup mt-2" onClick={handleClosePopup}>Đóng</button>

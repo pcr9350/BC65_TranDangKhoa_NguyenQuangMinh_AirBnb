@@ -39,7 +39,7 @@ const InfoUser = () => {
         if (!datPhongData || datPhongData.length === 0) {
           
           dispatch(resetBookingRooms());
-          return; 
+          return; // Exit the function early
         }
 
         // Extract unique room IDs
@@ -53,7 +53,7 @@ const InfoUser = () => {
         dispatch(setBookingRooms(fetchedRoomData));
       } catch (error) {
         console.error("Error fetching data:", error);
-        
+        // Handle error appropriately (e.g., display an error message to the user)
       }
     };
     fetchData();
@@ -64,18 +64,38 @@ const InfoUser = () => {
   const validationSchemaAvatar = Yup.object({
     avatar: Yup.mixed()
       .required('Vui lòng chọn ảnh đại diện.')
+    // .test(
+    //   'fileSize',
+    //   'Dung lượng ảnh quá lớn (tối đa 10MB).',
+    //   async (value) => {
+    //     if (!value) return false;
 
+    //     // Nén ảnh trước khi kiểm tra kích thước
+    //     return new Promise((resolve) => {
+    //       new Compressor(value, {
+    //         quality: 0.8, // Điều chỉnh chất lượng nếu cần
+    //         success(result) {
+    //           resolve(result.size <= 10 * 1024 * 1024); // Kiểm tra kích thước sau khi nén
+    //         },
+    //         error(err) {
+    //           console.error('Lỗi khi nén ảnh:', err);
+    //           resolve(false); 
+    //         }
+    //       });
+    //     });
+    //   }
+    // )
   });
   const [showModalAvatar, setShowModalAvatar] = useState(false);
 
   const handleUpdateAvatarClick = async (values) => {
     try {
       const formData = new FormData();
-      
+      console.log(values.avatar)
       formData.append("formFile", values.avatar);
 
       // Gửi formData lên server để xử lý
-      await updateUserAvatarService(values.avatar);
+      await updateUserAvatarService(formData);
       alert('Cập nhật avatar thành công');
     } catch (error) {
       console.error('Lỗi khi upload avatar:', error);
@@ -134,7 +154,7 @@ const InfoUser = () => {
     <div className="container mt-4">
       {!user || !user.id ? (
         <p>
-          Vui lòng <Link href="/login">Đăng nhập</Link> để xem thông tin người dùng.
+          Vui lòng <Link href="/">Đăng nhập</Link> để xem thông tin người dùng.
         </p>
       ) : (
         <div className="row info-user">
