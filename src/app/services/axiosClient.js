@@ -15,8 +15,7 @@ axiosClient.interceptors.request.use(
   async (config) => {
     // Chỉ lấy token từ localStorage nếu đang ở phía client (trình duyệt)
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    return {
-      
+    return { 
       ...config,
       headers: {
         "Content-Type": "application/json",
@@ -34,17 +33,22 @@ axiosClient.interceptors.response.use(
     if (response && response.data) return response.data;
     return response;
   },
-  (error) => {
-    if (error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      console.log("No response from server");
-      console.log(error.request);
-    } else {
-      console.log("Error", error.message);
+  // (error) => {
+  //   if (error.response) {
+  //     console.log(error.response.data);
+  //     console.log(error.response.status);
+  //     console.log(error.response.headers);
+  //   } else if (error.request) {
+  //     console.log("No response from server");
+  //     console.log(error.request);
+  //   } else {
+  //     console.log("Error", error.message);
+  //   }
+  //   return Promise.reject(error.response);
+  // }
+  (err) => {
+    if (!err.response) {
     }
-    return Promise.reject(error.response);
+    throw err.response;
   }
 );

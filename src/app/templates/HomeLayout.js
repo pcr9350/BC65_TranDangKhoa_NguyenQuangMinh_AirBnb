@@ -14,13 +14,10 @@ import AdminCustomTheme from '../admin/_app';
 
 
 const HomeLayout = (props) => {
-
   return (
     <>
-      
         <Provider store={store}>
           <AppRouterCacheProvider>
-
             <AdminCustomTheme>
               <div style={{ position: 'relative' }}>
                 <HeaderClient />
@@ -32,18 +29,11 @@ const HomeLayout = (props) => {
               <BackToTopButton />
               <Footer />
             </AdminCustomTheme>
-
-
           </AppRouterCacheProvider>
         </Provider>
-      
-
     </>
-
   )
-
 }
-
 export default HomeLayout
 
 
