@@ -182,7 +182,7 @@ const LocationModal = () => {
             />
           )}
           <TextField
-            label="Tên tên vị trí"
+            label="Tên vị trí"
             name="tenViTri"
             required
             value={locationData?.tenViTri}

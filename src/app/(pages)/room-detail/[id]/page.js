@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
-import { createBookingService } from '@/app/services/bookingService';
+import { createBookingService, getsBookingService } from '@/app/services/bookingService';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
@@ -60,14 +60,6 @@ const RoomDetail = (props) => {
     };
     fetchData();
   }, [id, binhLuanData]);
-  // useEffect(() => {
-  //   // Cập nhật giá trị ban đầu của checkInDate và checkOutDate sau khi component mount
-  //   // Kiểm tra formikRef.current trước khi sử dụng
-  //   if (formikRef.current && frmCheckInDate && frmCheckOutDate) {
-  //     formikRef.current.setFieldValue('checkInDate', frmCheckInDate);
-  //     formikRef.current.setFieldValue('checkOutDate', frmCheckOutDate);
-  //   }
-  // }, [frmCheckInDate, frmCheckOutDate]);
 
   let soLuongBinhLuan = binhLuanData.length;
   // Tính trung bình đánh giá
@@ -83,7 +75,9 @@ const RoomDetail = (props) => {
 
   // Formik validation schema
   const validationSchema = Yup.object({
-    checkInDate: Yup.date().required('Vui lòng chọn ngày nhận phòng').min(new Date(), 'Ngày nhận phòng phải sau ngày hôm nay'),
+    checkInDate: Yup.date()
+      .required('Vui lòng chọn ngày nhận phòng')
+      .min(new Date(new Date().setDate(new Date().getDate() - 1)), 'Ngày nhận phòng phải từ hôm nay trở đi'),
     checkOutDate: Yup.date()
       .required('Vui lòng chọn ngày trả phòng')
       .min(Yup.ref('checkInDate'), 'Ngày trả phòng phải sau ngày nhận phòng'),
@@ -105,22 +99,20 @@ const RoomDetail = (props) => {
         saoBinhLuan: rating,
       };
       await createBinhLuanService(data);
-      alert('Cám ơn bạn đã đánh giá!');
+      // alert('Cám ơn bạn đã đánh giá!');
       const getBinhLuanByRoomID = await getBinhLuanByRoomIDService(id);
       setBinhLuanData(getBinhLuanByRoomID);
     } catch (error) {
-      alert("Đánh giá thất bại, vui lòng thử lại");
 
     }
   };
-  
-  //Phần đặt phòng
+
   const handleSubmit = async (values) => {
     if (!user || !user.id) {
-      alert('Vui lòng đăng nhập trước khi đặt phòng');
+      toast.error("Vui lòng đăng nhập để đặt phòng");
       return; // Dừng xử lý nếu chưa đăng nhập
     }
-
+  
     try {
       const data = {
         maPhong: room.id,
@@ -129,11 +121,37 @@ const RoomDetail = (props) => {
         soLuongKhach: values.soLuongKhach,
         maNguoiDung: user.id
       };
+  
+      const dataDanhSachDatPhong = await getsBookingService();
+  
+      if (dataDanhSachDatPhong && dataDanhSachDatPhong.length > 0) {
+        // Lọc các đặt phòng có cùng mã phòng
+        const datPhongCungPhong = dataDanhSachDatPhong.filter(item => item.maPhong === room.id);
+  
+        // Kiểm tra trùng lặp ngày
+        const isTrungNgay = datPhongCungPhong.some(item => {
+          const ngayDenHienTai = new Date(data.ngayDen);
+          const ngayDiHienTai = new Date(data.ngayDi);
+          const ngayDenDaDat = new Date(item.ngayDen);
+          const ngayDiDaDat = new Date(item.ngayDi);
+  
+          return (
+            (ngayDenHienTai >= ngayDenDaDat && ngayDenHienTai <= ngayDiDaDat) || 
+            (ngayDiHienTai >= ngayDenDaDat && ngayDiHienTai <= ngayDiDaDat) ||
+            (ngayDenDaDat >= ngayDenHienTai && ngayDenDaDat <= ngayDiHienTai)
+          );
+        });
+  
+        if (isTrungNgay) {
+          toast.error("Đã có người đặt phòng vào ngày này. Bạn vui lòng chọn ngày khác !");
+          return; 
+        }
+      } 
+  
       await createBookingService(data);
-      alert('Đặt phòng thành công!');
     } catch (error) {
-      alert("Đặt phòng thất bại, vui lòng thử lại");
-
+      // Xử lý lỗi ở đây nếu cần
+      console.error("Lỗi khi tạo đặt phòng:", error); 
     }
   };
   function calculateRoomPrice(values, room) {
@@ -179,42 +197,34 @@ const RoomDetail = (props) => {
         <>
           <h2 className="mb-3">{room.tenPhong}</h2>
           <span><i className="fa fa-award icon-award mb-3"></i> Chủ nhà siêu cấp {!locations ? "" : <Link className='mx-3' href={`/rooms/${LocationLatin}`}>{locations?.tinhThanh}, Việt Nam</Link>}</span>
-          {/* Carousel */}
-          {/* <div id="carouselExampleFade" className="carousel slide carousel-fade mb-3" data-bs-ride="carousel">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <Image src={room.hinhAnh} width={1400} height={350} className="d-block w-100 rounded" alt="..." />
-              </div>
-            </div>
-          </div> */}
           <div
- className="mb-3"> {/* Loại bỏ các lớp carousel */}
-      <div className="carouselImageContainer" onClick={handleImageClick}>
-        <Image 
-          src={room.hinhAnh} 
-          width={1400} 
-          height={350} 
-          className="d-block w-100 rounded carouselImage img-fluid"
-          alt="..." 
-        />
-      </div>
+            className="mb-3"> {/* Loại bỏ các lớp carousel */}
+            <div className="carouselImageContainer" onClick={handleImageClick}>
+              <Image
+                src={room.hinhAnh}
+                width={1400}
+                height={350}
+                className="d-block w-100 rounded carouselImage img-fluid"
+                alt="..."
+              />
+            </div>
 
-      {showPopup && (
-        <div className="popupOverlay" onClick={handleClosePopup}>
-          <div className="popupContent">
-            <Image
-              src={room.hinhAnh}
-              width={1200} // Hoặc kích thước khác tùy ý
-              height={350}
-              alt="..."
-              className="img-fluid image-content-pop-up"
-            />
-            {/* Thêm nội dung khác vào popup nếu cần */}
-            <button className="btn btn-secondary btn-image-popup mt-2" onClick={handleClosePopup}>Đóng</button>
+            {showPopup && (
+              <div className="popupOverlay" onClick={handleClosePopup}>
+                <div className="popupContent">
+                  <Image
+                    src={room.hinhAnh}
+                    width={1200} // Hoặc kích thước khác tùy ý
+                    height={350}
+                    alt="..."
+                    className="img-fluid image-content-pop-up"
+                  />
+                  {/* Thêm nội dung khác vào popup nếu cần */}
+                  <button className="btn btn-secondary btn-image-popup mt-2" onClick={handleClosePopup}>Đóng</button>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      )}
-    </div>
 
           <Formik
             initialValues={{
@@ -358,11 +368,11 @@ const RoomDetail = (props) => {
                         <div className='d-flex align-items-center'>
                           <div className="input-group">
                             <button type="button" className="btn btn-outline-secondary btn-guest-count" onClick={() => setFieldValue('soLuongKhach', Math.max(1, values.soLuongKhach - 1))}>
-                            <i className="fa fa-minus"></i>
+                              <i className="fa fa-minus"></i>
                             </button>
                             <Field type="number" className="form-control text-center no-spinners" id="soLuongKhach" name="soLuongKhach" min="1" />
                             <button type="button" className="btn btn-outline-secondary btn-guest-count" onClick={() => setFieldValue('soLuongKhach', values.soLuongKhach + 1)}>
-                            <i className="fa fa-plus"></i>
+                              <i className="fa fa-plus"></i>
                             </button>
                           </div>
 

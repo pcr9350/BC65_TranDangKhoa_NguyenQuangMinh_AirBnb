@@ -499,6 +499,11 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
+.info-user .card-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+}
 
 .button-primary {
   background-color: #FE6B6E;

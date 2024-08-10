@@ -27,7 +27,7 @@ export const createBinhLuanService = async (binhLuanData) => {
         toast.success("Tạo bình luận thành công!");
         return data?.content;
       } catch (error) {
-        console.error("Error create binh luan:", error);
+        toast.error(error?.data?.content)
         return null;
       }
 };
@@ -58,7 +58,7 @@ export const updateBinhLuanService = async (binhLuanData) => {
         const data = await binhLuanApi.getByRoomID(id);
         return data?.content;
       } catch (error) {
-        console.error("Lỗi lấy bình luận theo phòng:", error);
+        toast.error("Lỗi lấy bình luận theo phòng:");
         return null;
       }
 };
