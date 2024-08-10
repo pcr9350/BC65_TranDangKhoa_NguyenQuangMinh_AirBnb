@@ -27,7 +27,7 @@ export const createBookingService = async (bookingData) => {
     toast.success("Đặt phòng thành công");
     return data?.content;
   } catch (error) {
-    console.error("Error create booking:", error);
+    toast.error(error?.data?.content)
     return null;
   }
 };
@@ -35,10 +35,10 @@ export const createBookingService = async (bookingData) => {
 export const deleteBookingService = async (idBooking) => {
   try {
     await bookingApi.delete(idBooking);
-    toast.success("Booking deleted successfully");
+    toast.success("Xóa đặt phòng thành công");
     return true;
   } catch (error) {
-    console.error("Error deleting booking:", error);
+    toast.error(error?.data?.content)
     return null;
   }
 };

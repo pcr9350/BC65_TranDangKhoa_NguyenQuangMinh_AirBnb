@@ -33,9 +33,9 @@ export const searchUserService = async (term) => {
 export const deleteUserService = async (userId) => {
   try {
     await toast.promise(userApi.deleteUser(userId), {
-      loading: "Deleting user...",
-      success: "User deleted successfully!",
-      error: "Error deleting user!",
+      loading: "Đang xóa người dùng...",
+      success: "Xóa người dùng thành công!",
+      error: "Lỗi xóa người dùng!",
     });
     return true;
   } catch (error) {
@@ -47,7 +47,7 @@ export const deleteUserService = async (userId) => {
 export const updateUserService = async (userData) => {
   try {
     const user = await userApi.updateUser(userData?.id, userData);
-    toast.success("User updated successfully");
+    toast.success("Sửa thông tin người dùng thành công");
     return user?.content;
   } catch (error) {
     console.log(error);
@@ -59,7 +59,7 @@ export const updateUserService = async (userData) => {
 export const createUserService = async (user) => {
   try {
     const createdUser = await userApi.createUser(user);
-    toast.success("User created successfully");
+    toast.success("Tạo người dùng thành công!");
     return createdUser?.content;
   } catch (error) {
     toast.error(error?.data?.content);

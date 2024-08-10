@@ -16,6 +16,7 @@ import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { setUser } from '@/app/redux/reducers/home/userSlice';
 import { resetBookingRooms, setBookingRooms } from '@/app/redux/reducers/home/bookingRoomSlice';
 import toast from 'react-hot-toast';
+import { Pagination } from 'react-bootstrap';
 dayjs.extend(customParseFormat);
 dayjs.extend(isSameOrBefore);// Kéo dài dayjs để hỗ trợ phân tích định dạng tùy chỉnh
 
@@ -38,9 +39,9 @@ const InfoUser = () => {
         const datPhongData = await getRoomByUserIdService(user.id);
         setBookingRoomData(datPhongData);
         if (!datPhongData || datPhongData.length === 0) {
-          
+
           dispatch(resetBookingRooms());
-          return; 
+          return;
         }
 
         // Extract unique room IDs
@@ -50,16 +51,16 @@ const InfoUser = () => {
         const roomDetailsPromises = arrayMaPhong.map(id => getRoomByID(id));
         const fetchedRoomData = await Promise.all(roomDetailsPromises);
 
-        
+
         dispatch(setBookingRooms(fetchedRoomData));
       } catch (error) {
-        console.error("Error fetching data:", error);
-        
+        toast.error(error);
+
       }
     };
     fetchData();
   }, [user, bookingrooms]);
-  
+
 
   //Xử lý upload avatar
   const validationSchemaAvatar = Yup.object({
@@ -72,12 +73,11 @@ const InfoUser = () => {
   const handleUpdateAvatarClick = async (values) => {
     try {
       const formData = new FormData();
-      
+
       formData.append("formFile", values.avatar);
 
       // Gửi formData lên server để xử lý
       await updateUserAvatarService(values.avatar);
-      alert('Cập nhật avatar thành công');
     } catch (error) {
       console.error('Lỗi khi upload avatar:', error);
       // Hiển thị thông báo lỗi cho người dùng
@@ -123,13 +123,21 @@ const InfoUser = () => {
       await updateUserService(values);
       const userData = await getUserService(user.id);
       dispatch(setUser(userData));
-      toast.success('Cập nhật thông tin thành công');
       setShowModalUpdate(false);
     }
     catch (error) {
-      toast.error('Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại.');
+      // toast.error('Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại.');
     }
   };
+  // Pagination logic
+  const [currentPage, setCurrentPage] = useState(1);
+  const roomsPerPage = 3;
+
+  const indexOfLastRoom = currentPage * roomsPerPage;
+  const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
+  const currentRooms = bookingrooms?.slice(indexOfFirstRoom, indexOfLastRoom);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="container mt-4">
@@ -347,46 +355,66 @@ const InfoUser = () => {
             <p className='mb-3 text-phong-thue'>Phòng đã thuê</p>
             <div className="row row-cols-1 row-cols-md-1 g-4 mb-4">
               {bookingrooms && bookingrooms.length > 0 ? ( // Conditionally render room cards or message
-                bookingrooms.map((room, index) => (
-                  <div key={index} className="col">
-                    <Link href={`/room-detail/${room.id}`} className='link-room-user'>
-                      <div className="card card-room">
-                        <div className="row g-0">
-                          <div className="col-md-6">
-                            <Image src={room.hinhAnh} alt="Room Image" width={1200} height={300} className="img-fluid rounded-start h-100" />
-                          </div>
-                          <div className="col-md-6">
-                            <div className="card-body">
-                              <h6 className="card-title card-room-user">{room.tenPhong}</h6>
-                              <hr />
-                              <p className='mb-2 text-room-user'>
-                                {room.khach} khách - {room.phongNgu} phòng ngủ - {room.giuong} giường - {room.phongTam} phòng tắm
-                              </p>
-                              <p className='mb-2 text-room-tien-nghi'>
-                                {room.mayGiat && "Máy giặt -"}
-                                {room.banLa && " Bàn là -"}
-                                {room.tivi && " Tivi -"}
-                                {room.dieuHoa && " Điều hòa -"}
-                                {room.wifi && " Wifi -"}
-                                {room.bep && " Bếp -"}
-                                {room.doXe && " Đậu xe -"}
-                                {room.hoBoi && " Hồ bơi -"}
-                                {room.banUi && " Bàn ủi"}
-                              </p>
-                              {/* Add more room details here as needed */}
+                <>
+
+
+                  {/* Render only the currentRooms */}
+                  {currentRooms.map((room, index) => (
+                    <div key={index} className="col">
+                      <Link href={`/room-detail/${room.id}`} className='link-room-user'>
+                        <div className="card card-room">
+                          <div className="row g-0">
+                            <div className="col-md-6">
+                              <Image src={room.hinhAnh} alt="Room Image" width={1200} height={300} className="img-fluid card-image rounded-start h-100" />
                             </div>
-                            <div className="card-footer footer-room-user d-flex justify-content-end align-items-center">
-                              <p className="text-giaTien mb-0">
-                                $ {room.giaTien}/đêm
-                              </p>
+                            <div className="col-md-6">
+                              <div className="card-body">
+                                <h6 className="card-title card-room-user">{room.tenPhong}</h6>
+                                <hr />
+                                <p className='mb-2 text-room-user'>
+                                  {room.khach} khách - {room.phongNgu} phòng ngủ - {room.giuong} giường - {room.phongTam} phòng tắm
+                                </p>
+                                <p className='mb-2 text-room-tien-nghi'>
+                                  {room.mayGiat && "Máy giặt -"}
+                                  {room.banLa && " Bàn là -"}
+                                  {room.tivi && " Tivi -"}
+                                  {room.dieuHoa && " Điều hòa -"}
+                                  {room.wifi && " Wifi -"}
+                                  {room.bep && " Bếp -"}
+                                  {room.doXe && " Đậu xe -"}
+                                  {room.hoBoi && " Hồ bơi -"}
+                                  {room.banUi && " Bàn ủi"}
+                                </p>
+                                {/* Add more room details here as needed */}
+                              </div>
+                              <div className="card-footer footer-room-user d-flex justify-content-end align-items-center">
+                                <p className="text-giaTien mb-0">
+                                  $ {room.giaTien}/đêm
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
 
-                  </div>
-                ))
+                    </div>
+                  ))}
+
+                  {/* Pagination */}
+                  {bookingrooms.length > roomsPerPage && (
+                    <div className="d-flex justify-content-center mt-3">
+                      <Pagination>
+                        {[...Array(Math.ceil(bookingrooms.length / roomsPerPage)).keys()].map(number => (
+                          <Pagination.Item key={number + 1} active={number + 1 === currentPage} onClick={() => paginate(number + 1)}>
+                            {number + 1}
+                          </Pagination.Item>
+                        ))}
+                      </Pagination>
+
+                    </div>
+
+                  )}
+                </>
               ) : (
                 <p>Bạn chưa có lịch sử thuê phòng</p>
               )}

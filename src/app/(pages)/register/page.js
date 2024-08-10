@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { 
-    TextField, Button, FormControl, FormLabel, RadioGroup, 
+    TextField, FormControl, FormLabel, RadioGroup, 
     FormControlLabel, Radio, 
-    Typography,
     CircularProgress
   } from '@mui/material';
   import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -14,7 +13,6 @@ import {
   import dayjs from 'dayjs'; // Import dayjs
 import { createUserService } from '@/app/services/userService';
 import { useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
 import Link from 'next/link';
 
 const validationSchema = Yup.object({
@@ -47,12 +45,9 @@ const Register = () => {
         try {
             const data = { ...values, role: 'USER', birthday: dayjs(values.birthday).format('DD/MM/YYYY')};
             await createUserService(data);
-            alert('Đăng kí user thành công');
-            router.push('/login');
             setIsLoading(false);
         }
         catch (error) {
-            console.log('Lỗi đăng kí', error);
             setIsLoading(false);
         }
       }
