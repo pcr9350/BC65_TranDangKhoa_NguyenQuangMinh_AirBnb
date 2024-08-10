@@ -372,7 +372,7 @@ const RoomModal = () => {
                 onChange={handleChangeSwitch}
               />
             }
-            label="Bàn Ui"
+            label="Bàn Ủi"
           />
           <FormControlLabel
             control={

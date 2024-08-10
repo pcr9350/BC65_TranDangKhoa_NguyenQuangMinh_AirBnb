@@ -8,7 +8,6 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 //import thư viện google map
-// import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { GoogleMapsEmbed } from '@next/third-parties/google'
 
 const ViTri = (props) => {

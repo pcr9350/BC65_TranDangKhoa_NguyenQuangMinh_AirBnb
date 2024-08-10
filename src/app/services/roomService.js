@@ -14,7 +14,7 @@ export const getsRoomService = async () => {
 export const createRoomService = async (roomData) => {
   try {
     const data = await roomApi.createRoom(roomData);
-    toast.success("Room created successfully");
+    toast.success("Tạo phòng thành công");
     return data?.content;
   } catch (error) {
     console.error("Error creating room:", error);
@@ -45,7 +45,7 @@ export const getRoomByID = async (id) => {
 export const updateRoomService = async (roomData) => {
   try {
     const data = await roomApi.updateRoom(roomData.id, roomData);
-    toast.success("Room updated successfully");
+    toast.success("Chỉnh sửa phòng thành công");
     return data?.content;
   } catch (error) {
     toast.error(error?.data?.content);
@@ -56,7 +56,7 @@ export const updateRoomService = async (roomData) => {
 export const deleteRoomService = async (idRoom) => {
   try {
     await roomApi.deleteRoom(idRoom);
-    toast.success("Room deleted successfully");
+    toast.success("Xóa phòng thành công");
     return true;
   } catch (error) {
     toast.error(error?.data?.content);

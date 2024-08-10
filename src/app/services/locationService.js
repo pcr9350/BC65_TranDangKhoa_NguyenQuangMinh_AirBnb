@@ -25,7 +25,7 @@ export const getLocationService = async (id) => {
 export const createLocationService = async (locationData) => {
   try {
     const data = await locationApi.create(locationData);
-    toast.success("Location created successfully!");
+    toast.success("Tạo địa điểm thành công!");
     return data?.content;
   } catch (error) {
     console.error("Error creating location:", error);
@@ -36,7 +36,7 @@ export const createLocationService = async (locationData) => {
 export const updateLocationService = async (locationData) => {
   try {
     const data = await locationApi.update(locationData?.id, locationData);
-    toast.success("Location updated successfully");
+    toast.success("Chỉnh sửa địa điểm thành công");
     return data?.content;
   } catch (error) {
     toast.error(error?.data?.content);
@@ -57,10 +57,9 @@ export const deleteLocationService = async (idLocation) => {
 export const updateImageService = async (idRom, img) => {
   try {
     const res = await roomApi.uploadPhotoRoom(idRom, img);
-    toast.success("Image updated successfully");
+    toast.success("Chỉnh sửa hình địa điểm thành công");
     return res?.content;
   } catch (error) {
-    console.error("Error updating image:", error);
     toast.error(error?.data?.content);
   }
 };
