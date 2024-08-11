@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLocationsID } from '../redux/reducers/home/locationSlice';
 import { setSearch } from '../redux/reducers/home/searchSlice';
 import { Spinner } from 'react-bootstrap'; // Import Spinner từ react-bootstrap
+import toast from 'react-hot-toast';
 
 const SearchTab = () => {
     const router = useRouter();
@@ -59,10 +60,11 @@ const SearchTab = () => {
                 checkOutDate: dayjs(checkOutDate).format("YYYY-MM-DD"),
                 soLuongKhach: guestCount,
             }));
+            toast.success(`Bạn đã chọn các phòng ở ${selectedLocation}`);
             router.push(`/rooms/${selectedLocationLatin}`); 
 
           } else {
-            alert('Vui lòng chọn địa điểm trước khi tìm kiếm.');
+            toast.error('Vui lòng chọn địa điểm trước khi tìm kiếm.');
           }
     };
     const handleGuestCountChange = (increment) => {

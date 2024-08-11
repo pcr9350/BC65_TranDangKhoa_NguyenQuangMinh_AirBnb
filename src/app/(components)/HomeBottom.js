@@ -18,7 +18,7 @@ const HomeBottom = () => {
         dispatch(setLocationsID(data));
         router.push(`/rooms/${destination}`);
     } catch (error) {
-        console.error("Error fetching location data:", error);
+        // console.error("Error fetching location data:", error);
     } finally {
         setIsLoading(false); // Kết thúc loading sau khi fetch xong hoặc có lỗi
     }

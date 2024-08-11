@@ -26,12 +26,13 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #505763;
-  backdrop-filter: none;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: none !important;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 .navbar-customize.fixed-top {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #29303b !important;
   backdrop-filter: blur(2px);
 }
 .navbar-customize .navbar-toggler {
