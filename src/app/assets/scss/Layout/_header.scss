@@ -4,14 +4,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    // z-index: 99; /* Đảm bảo menu nằm trên video */
+    z-index: 2; 
 
-    background-color: $color-black-light;
-    backdrop-filter: none;      // Không làm mờ ban đầu
+  // Đặt màu nền trong suốt ban đầu
+  background-color: $navbar-background-color !important; 
+
+  // Loại bỏ backdrop-filter ban đầu
+  backdrop-filter: none !important; 
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease; // Chuyển tiếp mượt mà
 
     &.fixed-top { // Khi navbar có class "fixed-top" (khi cuộn)
-        background-color: $navbar-background-color;
+        background-color: $color-black-0 !important;
         backdrop-filter: $navbar-backdrop-filter;
       }
     .navbar-toggler {
