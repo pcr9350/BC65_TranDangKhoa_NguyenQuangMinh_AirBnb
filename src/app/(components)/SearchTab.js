@@ -172,7 +172,7 @@ const SearchTab = () => {
                 className="btn btn-header-guest-count" 
                 type="button" 
                 onClick={() => handleGuestCountChange(-1)}
-                disabled={guestCount === 1} // Vô hiệu hóa nút giảm khi guestCount = 1
+                
               >
                 <i className="fa fa-minus"></i>
               </button>
