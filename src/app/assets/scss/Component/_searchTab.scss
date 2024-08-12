@@ -13,6 +13,9 @@
       margin-left: 10px;
       font-weight: 500; // Tăng độ đậm cho chữ
       cursor: pointer;
+      @media (max-width: 576px) { // xs breakpoint
+        font-size: 0.6rem;
+      }
       &:hover {
         background-color: #f5d5d7;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -52,7 +55,10 @@
     align-items: center;
     transition: background-color 0.3s, box-shadow 0.3, transform 0.3s;
     margin-left: 10px;
-    
+    @media (max-width: 576px) { // xs breakpoint
+      width: 30px;
+      height: 30px;
+    }
     &:hover {
       background-color: #e11d48;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
@@ -61,6 +67,9 @@
 
     i {
       font-size: 20px;
+      @media (max-width: 576px) {
+        font-size: $fs-15;
+      }
     }
   }
 }
@@ -83,7 +92,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-
+    
     &:hover {
       opacity: 0.8;
     }
@@ -105,6 +114,9 @@
     .location-name {
       margin-top: 5px;
       text-align: center;
+      @media (max-width: 576px) {
+        font-size: $fs-15;
+      }
     }
   }
 }
@@ -112,6 +124,9 @@
 .tab-content-date {
   width: 70%;
   margin: 0 auto;
+  @media (max-width: 576px) {
+    font-size: $fs-15;
+  }
 }
 
 .tab-content-guest {
@@ -124,6 +139,9 @@
     margin-left: 40%;
     margin-right: 0;
   }
+  @media (max-width: 576px) {
+    font-size: $fs-15;
+  }
 
   .btn-header-guest-count {
     background-color: $color-pink;
@@ -131,5 +149,18 @@
     &:hover {
       background-color: $color-pink-1; 
     }
+    @media (max-width: 576px) {
+      font-size: $fs-15;
+    }
+  }
+}
+
+// Thêm các breakpoint cho responsive design
+@media (max-width: 576px) { // xs breakpoint
+  .tab-content-locations,
+  .tab-content-date,
+  .tab-content-guest {
+    width: 80%; // Điều chỉnh độ rộng của các tab content khi ở xs breakpoint
+    margin: 0 auto;
   }
 }

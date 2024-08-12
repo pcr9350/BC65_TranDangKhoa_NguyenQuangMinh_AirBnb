@@ -73,6 +73,9 @@
     color: $color-pink;
     transition: color 0.5s ease-in-out;
     font-size: $fs-40;
+    @media (max-width: 576px) {
+        font-size: 30px;
+    }
     &:hover {
         color: $color-pink-1;
         cursor: pointer;
