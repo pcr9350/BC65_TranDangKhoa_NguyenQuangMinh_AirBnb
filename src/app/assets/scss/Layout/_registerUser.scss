@@ -8,6 +8,13 @@
     color: $color-white-0 !important;
     border: none !important;
     width: 150px;
+    @media (max-width: 576px) {
+        width: 110px;
+        span {
+            font-size: $fs-15;
+        }
+        
+    }
     &:hover {
         background-color: $color-pink-1 !important;
     }
@@ -18,7 +25,17 @@
     color: $color-white-0 !important;
     border: none !important;
     width: 150px;
-    
+    @media (max-width: 576px) {
+        width: 110px;
+        span {
+            font-size: $fs-15;
+        }
+        i {
+            font-size: $fs-8;
+        }
+        
+        
+    }
     &:hover {
         background-color: $color-black-light !important;
     }
