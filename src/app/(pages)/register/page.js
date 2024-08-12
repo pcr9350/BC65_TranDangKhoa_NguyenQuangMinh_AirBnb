@@ -56,7 +56,7 @@ const Register = () => {
       <h1 className="text-danger display-4" style={{ fontFamily: "fantasy" }}>
         Airbnb
       </h1>
-      <div className="card w-100" style={{ maxWidth: "400px" }}>
+      <div className="card w-100" style={{ maxWidth: "500px" }}>
         <div className="card-body">
           <h2 className="card-title text-center fs-5">Đăng kí</h2>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -109,11 +109,11 @@ const Register = () => {
               disabled={isLoading}
               className="btn btn-dang-nhap" // Sử dụng các class của Bootstrap
             >
-              {isLoading ? <CircularProgress size={24} /> : "Đăng kí"}
+              {isLoading ? <CircularProgress size={24} /> : <span>Đăng kí</span>}
             </button>
             </div>
                 <div className="col-6 text-end">
-                <Link href={"/login"} className="btn btn-dang-ki">Đăng nhập <i className="fa fa-hand-point-right"></i></Link>
+                <Link href={"/login"} className="btn btn-dang-ki"><span>Đăng nhập </span><i className="fa fa-hand-point-right"></i></Link>
                 </div>
                 </div>
         </Form>

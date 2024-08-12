@@ -177,6 +177,14 @@ a {
   border: none !important;
   width: 150px;
 }
+@media (max-width: 576px) {
+  .btn-dang-nhap {
+    width: 110px;
+  }
+  .btn-dang-nhap span {
+    font-size: 15px;
+  }
+}
 .btn-dang-nhap:hover {
   background-color: #e11d48 !important;
 }
@@ -186,6 +194,17 @@ a {
   color: #fff !important;
   border: none !important;
   width: 150px;
+}
+@media (max-width: 576px) {
+  .btn-dang-ki {
+    width: 110px;
+  }
+  .btn-dang-ki span {
+    font-size: 15px;
+  }
+  .btn-dang-ki i {
+    font-size: 8px;
+  }
 }
 .btn-dang-ki:hover {
   background-color: #505763 !important;
