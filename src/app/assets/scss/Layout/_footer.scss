@@ -1,11 +1,13 @@
 .home-footer {
     background-color: $color-black-dark;
-
+    
     .home-footer-link {
         text-decoration: none;
         color: $color-black-0;
         display: block;
-
+        @media (max-width: 576px) {
+            font-size: $fs-10;
+        }
         &:hover {
             text-decoration: underline;
             color: $color-pink;
@@ -16,7 +18,9 @@
         color: $color-black-0;
         display: block;
         font-size: $fs-20;
-
+        @media (max-width: 576px) {
+            font-size: $fs-15;
+        }
         &:hover {
             text-decoration: underline;
             color: $color-pink;
