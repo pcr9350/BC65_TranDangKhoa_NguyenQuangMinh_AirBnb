@@ -203,9 +203,10 @@ function HeaderClient() {
 
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   {user ? (
-                    <Avatar alt={user.name} src={user.avatar} />
+                    <Avatar alt={user.name} src={user.avatar ? user.avatar : "https://airbnbnew.cybersoft.edu.vn/avatar/25-06-2024-05-39-00-avatar-model.png"} />
                   ) : (
-                    <i className="fa fa-user-circle user-button"></i>
+                    // <i className="fa fa-user-circle user-button"></i>
+                    <i class="fa fa-sign-in user-button" aria-hidden="true"></i>
                   )}
                 </IconButton>
 
