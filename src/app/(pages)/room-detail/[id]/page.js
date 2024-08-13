@@ -123,18 +123,18 @@ const RoomDetail = (props) => {
       };
   
       const dataDanhSachDatPhong = await getsBookingService();
-  
+      let ngayKhachDaDat = null;
       if (dataDanhSachDatPhong && dataDanhSachDatPhong.length > 0) {
         // Lọc các đặt phòng có cùng mã phòng
         const datPhongCungPhong = dataDanhSachDatPhong.filter(item => item.maPhong === room.id);
   
         // Kiểm tra trùng lặp ngày
-        const isTrungNgay = datPhongCungPhong.some(item => {
+        const isTrungNgay = datPhongCungPhong?.some(item => {
           const ngayDenHienTai = new Date(data.ngayDen);
           const ngayDiHienTai = new Date(data.ngayDi);
           const ngayDenDaDat = new Date(item.ngayDen);
           const ngayDiDaDat = new Date(item.ngayDi);
-  
+          ngayKhachDaDat = ngayDiDaDat;
           return (
             (ngayDenHienTai >= ngayDenDaDat && ngayDenHienTai <= ngayDiDaDat) || 
             (ngayDiHienTai >= ngayDenDaDat && ngayDiHienTai <= ngayDiDaDat) ||
@@ -143,7 +143,7 @@ const RoomDetail = (props) => {
         });
   
         if (isTrungNgay) {
-          toast.error("Đã có người đặt phòng vào ngày này. Bạn vui lòng chọn ngày khác !");
+          toast.error(`Đã có người đặt phòng nầy tới ngày ${dayjs(ngayKhachDaDat).format("DD/MM/YYYY")}. Bạn vui lòng chọn ngày khác !`);
           return; 
         }
       } 
@@ -154,6 +154,7 @@ const RoomDetail = (props) => {
       console.error("Lỗi khi tạo đặt phòng:", error); 
     }
   };
+
   function calculateRoomPrice(values, room) {
     if (!values.checkOutDate || !values.checkInDate) {
       return 0; // No dates, no price
