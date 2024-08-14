@@ -104,7 +104,7 @@ function HeaderClient() {
               variant="h5"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              href="/"
               className='brand-header'
               sx={{
                 mr: 2,
@@ -167,7 +167,7 @@ function HeaderClient() {
               variant="h5"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              href="/"
               className='brand-header'
               sx={{
                 mr: 2,
@@ -206,7 +206,7 @@ function HeaderClient() {
                     <Avatar alt={user.name} src={user.avatar ? user.avatar : "https://airbnbnew.cybersoft.edu.vn/avatar/25-06-2024-05-39-00-avatar-model.png"} />
                   ) : (
                     // <i className="fa fa-user-circle user-button"></i>
-                    <i class="fa fa-sign-in user-button" aria-hidden="true"></i>
+                    <i className="fa fa-sign-in user-button" aria-hidden="true"></i>
                   )}
                 </IconButton>
 
