@@ -25,7 +25,8 @@ const RoomDetail = (props) => {
   const { locations } = useSelector((state) => state.locations);
   const [frmCheckInDate, setFrmCheckInDate] = useState(search?.checkInDate);
   const [frmCheckOutDate, setFrmCheckOutDate] = useState(search?.checkOutDate);
-  const formikRef = useRef(null); // Tạo ref cho Formik
+  const formikRef = useRef(null); // Tạo ref cho Formik đặt phòng
+  const formikBinhLuanRef = useRef(null); // Ref cho Formik bình luận
   const { user } = useSelector((state) => state.user);
   const [rating, setRating] = useState(0);
   const [night, setNight] = useState(0);
@@ -102,6 +103,10 @@ const RoomDetail = (props) => {
       // alert('Cám ơn bạn đã đánh giá!');
       const getBinhLuanByRoomID = await getBinhLuanByRoomIDService(id);
       setBinhLuanData(getBinhLuanByRoomID);
+      // Reset form bình luận sau khi gửi bình luận thành công
+      formikBinhLuanRef.current?.resetForm(); 
+      setRating(0);
+      
     } catch (error) {
 
     }
@@ -425,6 +430,7 @@ const RoomDetail = (props) => {
               initialValues={{ noiDung: '' }}
               validationSchema={validationSchemaBinhLuan}
               onSubmit={handleSubmitBinhLuan}
+              innerRef={formikBinhLuanRef} // Gán ref cho Formik bình luận
             >
               <Form>
                 <div className="d-flex align-items-center mb-1">
