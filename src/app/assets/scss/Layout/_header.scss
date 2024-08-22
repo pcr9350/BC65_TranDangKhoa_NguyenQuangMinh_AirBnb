@@ -16,6 +16,7 @@
     &.fixed-top { // Khi navbar có class "fixed-top" (khi cuộn)
         background-color: $color-black-0 !important;
         backdrop-filter: $navbar-backdrop-filter;
+        transition: all 0.7s ease-in-out;
       }
     .navbar-toggler {
         background-color: $color-pink;

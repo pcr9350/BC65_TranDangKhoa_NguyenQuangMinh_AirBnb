@@ -1,8 +1,26 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdPerson } from "react-icons/md";
 
 const Footer = () => {
+  const [showFixedFooter, setShowFixedFooter] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Kiểm tra nếu người dùng đã cuộn đến cuối trang
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        setShowFixedFooter(true); 
+      } else {
+        setShowFixedFooter(false); 
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <footer className="container-fluid home-footer">
         <div className='row'>
@@ -47,7 +65,37 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-      <div className='row'>
+      <div className={`row ${showFixedFooter ?  '' : 'fixed-bottom-footer'}`}>
+        <div className='col-12 col-lg-5'>
+          <ul className="list-inline text-start text-xl-center">
+            <li className="list-inline-item"><i className="fa fa-copyright"></i> 2022 Airbnb, Inc</li>
+            <li className="list-inline-item mx-2"><Link href={'https://www.airbnb.com.vn/help/article/2855'} className='home-footer-link'>Quyền riêng tư</Link></li>
+            <li className="list-inline-item mx-2"><Link href={'https://www.airbnb.com.vn/help/article/2908'} className='home-footer-link'>Điều khoản</Link></li>
+            <li className="list-inline-item mx-2"><Link href={'https://www.airbnb.com.vn/sitemaps/v2'} className='home-footer-link'>Sơ đồ web</Link></li>
+          </ul>
+
+        </div>
+        <div className='col-12 col-lg-7'>
+          <div className='row'>
+              <div className='col-7'>
+              <ul className="list-inline text-end">
+                <li className="list-inline-item mx-2"> <Link href={'/'} className='home-footer-link'><i className="fa fa-globe"></i> Tiếng Việt (VN)</Link></li>
+                <li className="list-inline-item mx-2"><Link href={'/'} className='home-footer-link'>USD</Link></li>
+              </ul>
+              </div>
+              <div className='col-5'>
+              <ul className="list-inline text-start">
+                <li className="list-inline-item mx-2"> <Link href={'https://www.facebook.com/airbnb'} className='home-footer-social'><i className="fab fa-facebook"></i></Link></li>
+                <li className="list-inline-item mx-2"><Link href={'https://x.com/airbnb'} className='home-footer-social'><i className="fab fa-twitter-square"></i></Link></li>
+                <li className="list-inline-item mx-2"><Link href={'https://www.instagram.com/airbnb/'} className='home-footer-social'><i className="fab fa-instagram"></i></Link></li>
+              </ul>
+              </div>
+              
+          </div>
+        
+        </div>
+      </div>
+      <div className={`row`}>
         <div className='col-12 col-lg-5'>
           <ul className="list-inline text-start text-xl-center">
             <li className="list-inline-item"><i className="fa fa-copyright"></i> 2022 Airbnb, Inc</li>
