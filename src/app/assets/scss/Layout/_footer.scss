@@ -1,6 +1,18 @@
 .home-footer {
     background-color: $color-black-dark;
-    
+    @media (max-width: 576px) {
+        font-size: $fs-15;
+    }
+    .fixed-bottom-footer {
+        position: fixed;
+        bottom: 0;
+        left: 10;
+        width: 100%;
+        background-color: $color-white-cream;
+        padding-top: 1rem;
+        z-index: 10;
+        transition: all 0.7s ease-in-out;
+      }
     .home-footer-link {
         text-decoration: none;
         color: $color-black-0;
@@ -27,3 +39,6 @@
         }
     }
 }
+
+
+

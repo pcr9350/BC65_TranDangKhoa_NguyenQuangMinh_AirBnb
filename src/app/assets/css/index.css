@@ -34,6 +34,7 @@ a {
 .navbar-customize.fixed-top {
   background-color: #29303b !important;
   backdrop-filter: blur(2px);
+  transition: all 0.7s ease-in-out;
 }
 .navbar-customize .navbar-toggler {
   background-color: #FE6B6E;
@@ -136,6 +137,21 @@ a {
 
 .home-footer {
   background-color: rgba(20, 23, 28, 0.1);
+}
+@media (max-width: 576px) {
+  .home-footer {
+    font-size: 15px;
+  }
+}
+.home-footer .fixed-bottom-footer {
+  position: fixed;
+  bottom: 0;
+  left: 10;
+  width: 100%;
+  background-color: #f2f3f5;
+  padding-top: 1rem;
+  z-index: 10;
+  transition: all 0.7s ease-in-out;
 }
 .home-footer .home-footer-link {
   text-decoration: none;
