@@ -44,7 +44,7 @@ const AdminLogin = () => {
         router.push("/");
       } else if (data?.role === "ADMIN") {
         toast.success("Đăng nhập thành công")
-        router.push("/admin/users");
+        router.push("/admin/db-admin");
       } else {
         toast.error("Lỗi đăng nhập");
       }
