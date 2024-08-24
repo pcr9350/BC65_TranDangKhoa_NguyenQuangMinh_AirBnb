@@ -157,7 +157,7 @@ const InfoUser = () => {
                   height={150}
                   className="rounded-circle mb-3"
                 />
-                <a
+                {/* <a
                   href="#"
                   className="link-update-info mb-3"
                   onClick={(e) => {
@@ -166,7 +166,7 @@ const InfoUser = () => {
                   }}
                 >
                   Cập nhật ảnh
-                </a>
+                </a> */}
 
                 {showModalAvatar && (
                   <div className="modal fade show d-block" role="dialog">
